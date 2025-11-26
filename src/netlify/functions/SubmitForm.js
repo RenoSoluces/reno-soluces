@@ -1,12 +1,6 @@
-import type { Handler } from "@netlify/functions";
-import Airtable from "airtable";
+const Airtable = require("airtable");
 
-// --- Airtable config ---
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  process.env.AIRTABLE_BASE_ID as string
-);
-
-export const handler: Handler = async (event) => {
+exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -17,7 +11,9 @@ export const handler: Handler = async (event) => {
   try {
     const data = JSON.parse(event.body || "{}");
 
-    const record = await base(process.env.AIRTABLE_TABLE_NAME as string).create({
+    const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
+
+    const record = await base(process.env.AIRTABLE_TABLE_NAME).create({
       "Nom": data.lastName,
       "Prénom": data.firstName,
       "Email": data.email,
@@ -36,12 +32,13 @@ export const handler: Handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ success: true, id: record.id }),
     };
-  } catch (error: any) {
+
+  } catch (error) {
     return {
       statusCode: 500,
       body: JSON.stringify({
         error: "Airtable error",
-        details: error.message || error,
+        details: error.message,
       }),
     };
   }
