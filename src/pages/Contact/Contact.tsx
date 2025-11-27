@@ -69,7 +69,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
   e.preventDefault();
 
   try {
-    const response = await fetch("/.netlify/functions/submitForm", {
+    const response = await fetch("/.netlify/functions/SubmitForm", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
