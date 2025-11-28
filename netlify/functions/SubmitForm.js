@@ -1,17 +1,18 @@
-const Airtable = require("airtable");
+import Airtable from "airtable";
 
-exports.handler = async (event) => {
+export async function handler(event, context) {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      body: JSON.stringify({ error: "Method not allowed" }),
+      body: JSON.stringify({ error: "Method not allowed" })
     };
   }
 
   try {
     const data = JSON.parse(event.body || "{}");
 
-    const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
+    const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
+      .base(process.env.AIRTABLE_BASE_ID);
 
     const record = await base(process.env.AIRTABLE_TABLE_NAME).create({
       "Nom": data.lastName,
@@ -21,7 +22,7 @@ exports.handler = async (event) => {
       "Adresse": data.address,
       "Code Postal": data.postalCode,
       "Ville": data.city,
-      "Projet": data.project,
+      "Nom du Projet": data.project,
       "Type de Chauffage": data.heating,
       "Date RDV": data.appointmentDate,
       "Heure RDV": data.appointmentTime,
@@ -42,4 +43,4 @@ exports.handler = async (event) => {
       }),
     };
   }
-};
+}
