@@ -1,4 +1,3 @@
-require('dotenv').config();
 const Airtable = require("airtable");
 
 exports.handler = async function(event, context) {
@@ -15,17 +14,15 @@ exports.handler = async function(event, context) {
   }
 
   try {
-    console.log("🔑 AIRTABLE_API_KEY:", process.env.AIRTABLE_API_KEY ? "OK" : "❌ MANQUANTE");
-    console.log("🔑 AIRTABLE_BASE_ID:", process.env.AIRTABLE_BASE_ID ? "OK" : "❌ MANQUANTE");
-    console.log("🔑 AIRTABLE_TABLE_NAME:", process.env.AIRTABLE_TABLE_NAME ? "OK" : "❌ MANQUANTE");
+    console.log("🔑 Variables AIRTABLE:");
+    console.log("AIRTABLE_API_KEY:", process.env.AIRTABLE_API_KEY ? "✔️ OK" : "❌ ABSENTE");
+    console.log("AIRTABLE_BASE_ID:", process.env.AIRTABLE_BASE_ID ? "✔️ OK" : "❌ ABSENTE");
+    console.log("AIRTABLE_TABLE_NAME:", process.env.AIRTABLE_TABLE_NAME ? "✔️ OK" : "❌ ABSENTE");
 
     const data = JSON.parse(event.body || "{}");
-    console.log("🧩 Données reçues:", data);
 
     const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
       .base(process.env.AIRTABLE_BASE_ID);
-
-    console.log("📦 Enregistrement dans Airtable…");
 
     const record = await base(process.env.AIRTABLE_TABLE_NAME).create({
       "Nom": data.lastName,
@@ -42,7 +39,7 @@ exports.handler = async function(event, context) {
       "Consentement": data.consent ? "Oui" : "Non",
     });
 
-    console.log("✅ Succès Airtable — ID:", record.id);
+    console.log("✅ Enregistrement réussi ! ID:", record.id);
 
     return {
       statusCode: 200,
