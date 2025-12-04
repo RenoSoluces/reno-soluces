@@ -30,7 +30,7 @@ export async function handler(event, context) {
       "Type de chauffage": data.heating,
       "Date RDV": data.appointmentDate,
       "Heure RDV": data.appointmentTime,
-      "Consentement": data.consent ? "Oui" : "Non"
+      "Consentement": data.consent === true
     };
 
     console.log("🧩 Champs envoyés à Airtable:", fields);
