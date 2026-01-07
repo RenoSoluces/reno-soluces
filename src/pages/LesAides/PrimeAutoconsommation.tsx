@@ -29,7 +29,7 @@ const PrimeAutoconsommation: React.FC<{ onPageChange: (page: string) => void }> 
               </span>
             </div>
             <button
-              onClick={() => onPageChange("simulateur-autoconsommation")}
+              onClick={() => onPageChange("simulateur")}
               className="px-8 py-4 bg-white text-orange-600 font-bold text-lg rounded-full shadow-lg hover:bg-gray-100 transition"
             >
               ☀️ Je découvre mon montant
@@ -132,7 +132,7 @@ const PrimeAutoconsommation: React.FC<{ onPageChange: (page: string) => void }> 
             Profitez de la prime à l’autoconsommation et valorisez votre toiture tout en réduisant vos dépenses.
           </p>
           <button
-            onClick={() => onPageChange("simulateur-autoconsommation")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             🌞 Je simule ma prime

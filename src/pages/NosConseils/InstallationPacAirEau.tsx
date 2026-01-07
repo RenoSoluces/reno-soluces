@@ -242,10 +242,10 @@ const InstallationPacAirEau: React.FC<{ onPageChange: (page: string) => void }> 
             les aides disponibles et le dimensionnement optimal pour votre logement.
           </p>
           <button
-            onClick={() => onPageChange("simulation")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
-            🔧 Demander mon étude technique
+            ⚡ Estimer mes économies
           </button>
         </section>
       </main>

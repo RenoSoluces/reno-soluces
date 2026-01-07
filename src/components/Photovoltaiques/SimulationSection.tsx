@@ -19,7 +19,7 @@ const SimulationSection: React.FC<SimulationSectionProps> = ({ onPageChange }) =
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
           Lancez votre{' '}
           <span
-onClick={() => onPageChange("simulateur-photovoltaique")}
+onClick={() => onPageChange("simulateur")}
 className="underline decoration-green-300 decoration-2 underline-offset-4 cursor-pointer hover:text-green-600 transition-colors"
 
 >
@@ -37,7 +37,7 @@ simulation solaire personnalisée </span>
 
         {/* CTA */}
 <button 
-  onClick={() => onPageChange('simulateur-photovoltaique')}
+  onClick={() => onPageChange('simulateur')}
   className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
 >
   Je calcule ma rentabilité solaire

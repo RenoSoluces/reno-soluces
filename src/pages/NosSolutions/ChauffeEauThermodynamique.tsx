@@ -11,7 +11,6 @@ import FonctionnementChauffeEauSection from '../../components/ChauffeEauThermody
 import TypesChauffeEauSection from '../../components/ChauffeEauThermodynamique/TypesChauffeEauSection';
 import InstallationProfessionnelSection from '../../components/ChauffeEauThermodynamique/InstallationProfessionnelSection';
 import AidesFinancieresSection from '../../components/ChauffeEauThermodynamique/AidesFinancieresSection';
-import AvisRenoSolucesSection from '../../components/ChauffeEauThermodynamique/AvisRenoSolucesSection';
 import FaqSection from '../../components/ChauffeEauThermodynamique/FaqSection';
 
 interface ChauffeEauThermodynamiqueProps {
@@ -35,7 +34,6 @@ const ChauffeEauThermodynamique: React.FC<ChauffeEauThermodynamiqueProps> = ({ o
       <TypesChauffeEauSection />
       <InstallationProfessionnelSection />
       <AidesFinancieresSection onPageChange={onPageChange} />
-      <AvisRenoSolucesSection />
       <FaqSection onPageChange={onPageChange} />
       
       <Actualites onPageChange={onPageChange} />

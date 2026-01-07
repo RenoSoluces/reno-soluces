@@ -34,7 +34,7 @@ export default function HeroSection({ onPageChange }: HeroSectionProps) {
 
                 <div className="space-y-4">
                   <button
-                  onClick={() => onPageChange('simulateur-photovoltaique')}
+                  onClick={() => onPageChange('simulateur')}
                   aria-label="Estimez gratuitement vos économies avec Reno Soluces"
                   className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto">
 

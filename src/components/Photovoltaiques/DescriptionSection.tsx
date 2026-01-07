@@ -17,7 +17,7 @@ const DescriptionSection: React.FC<DescriptionSectionProps> = ({ onPageChange })
         </p>
 
         <button
-          onClick={() => onPageChange('simulateur-photovoltaique')}
+          onClick={() => onPageChange('simulateur')}
           className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
         >
           J’installe des panneaux photovoltaïques

@@ -11,7 +11,6 @@ import EtapesRenovationSection from '../../components/RenovationAmpleur/EtapesRe
 import TravauxInclusSection from '../../components/RenovationAmpleur/TravauxInclusSection';
 import AidesFinancieresSection from '../../components/RenovationAmpleur/AidesFinancieresSection';
 import AccompagnementRenoSolucesSection from '../../components/RenovationAmpleur/AccompagnementRenoSolucesSection';
-import AvisRenoSolucesSection from '../../components/RenovationAmpleur/AvisRenoSolucesSection';
 import FaqSection from '../../components/RenovationAmpleur/FaqSection';
 
 interface RenovationAmpleurProps {
@@ -35,7 +34,6 @@ const RenovationAmpleur: React.FC<RenovationAmpleurProps> = ({ onPageChange }) =
       <TravauxInclusSection />
       <AidesFinancieresSection onPageChange={onPageChange} /> 
       <AccompagnementRenoSolucesSection />
-      <AvisRenoSolucesSection />
       <FaqSection onPageChange={onPageChange} />
       
       <Actualites onPageChange={onPageChange} />

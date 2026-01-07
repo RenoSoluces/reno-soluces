@@ -30,7 +30,7 @@ const PouceChauffage: React.FC<{ onPageChange: (page: string) => void }> = ({ on
               </span>
             </div>
             <button
-              onClick={() => onPageChange("simulateur-aides")}
+              onClick={() => onPageChange("simulateur")}
               className="px-8 py-4 bg-yellow-300 text-red-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
             >
               🚀 Je profite du Coup de Pouce
@@ -152,7 +152,7 @@ const PouceChauffage: React.FC<{ onPageChange: (page: string) => void }> = ({ on
             Bénéficiez d’un accompagnement complet et de travaux réalisés par des professionnels RGE.
           </p>
           <button
-            onClick={() => onPageChange("simulateur-aides")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-yellow-300 hover:bg-yellow-200 text-red-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             🔥 Je simule mon Coup de Pouce

@@ -254,7 +254,7 @@ const CeeIsolationExterieure: React.FC<{ onPageChange: (page: string) => void }>
             d'isolation thermique par l'extérieur dans les meilleures conditions.
           </p>
           <button
-            onClick={() => onPageChange("simulateur-isolation")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             🎯 Estimer mes aides

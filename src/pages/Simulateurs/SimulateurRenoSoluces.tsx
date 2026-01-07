@@ -43,7 +43,7 @@ const produitOptions = [
 
 const totalSteps = 8;
 
-const SimulateurAides: React.FC<{ onPageChange: (page: string) => void }> = ({
+const SimulateurRenoSoluces: React.FC<{ onPageChange: (page: string) => void }> = ({
   onPageChange,
 }) => {
   const [step, setStep] = useState<number>(1);
@@ -731,4 +731,4 @@ const SimulateurAides: React.FC<{ onPageChange: (page: string) => void }> = ({
   );
 };
 
-export default SimulateurAides;
+export default SimulateurRenoSoluces;

@@ -277,7 +277,7 @@ const RentabiliteChauffeEauThermodynamique: React.FC<{ onPageChange: (page: stri
             adapté à vos besoins et votre consommation.
           </p>
           <button
-            onClick={() => onPageChange("simulateur-produire-mon-eau-chaude")} 
+            onClick={() => onPageChange("simulateur")} 
             className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             💧 Calculer mes économies

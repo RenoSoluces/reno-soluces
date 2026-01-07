@@ -420,7 +420,7 @@ const PassoiresThermiques: React.FC<{ onPageChange: (page: string) => void }> = 
             en un espace confortable et économique grâce aux aides renforcées.
           </p>
           <button
-            onClick={() => onPageChange("simulation")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-white hover:bg-gray-100 text-red-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             🏠 Évaluer mon logement

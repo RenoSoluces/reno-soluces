@@ -54,14 +54,8 @@ import MentionsLegales from "./pages/Annexe/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/Annexe/PolitiqueConfidentialite";
 import PolitiqueCookies from "./pages/Annexe/PolitiqueCookies";
 import Contact from "./pages/Contact/Contact";
-import SimulateurPhotovoltaique from "./pages/Simulateurs/SimulateurPhotovoltaique"
-import SimulateurIsolation from "./pages/Simulateurs/SimulateurIsolation";
-import SimulateurBallonThermodynamique from "./pages/Simulateurs/SimulateurBallonThermodynamique";
-import SimulateurRenovationAmpleur from "./pages/Simulateurs/SimulateurRenovationAmpleur";
-import SimulateurPACAirEau from "./pages/Simulateurs/SimulateurPACAirEau";
-import SimulateurPACAirAir from "./pages/Simulateurs/SimulateurPACAirAir";
-import SimulateurAides from "./pages/Simulateurs/SimulateurAides";
-import SimulateurAutoconso from "./pages/Simulateurs/SimulateurAutoconso";
+import SimulateurRenoSoluces from "./pages/Simulateurs/SimulateurRenoSoluces";
+
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -259,37 +253,10 @@ function App() {
       return <Contact onPageChange={setCurrentPage} />;
     }
 
-    if (currentPage === "simulateur-photovoltaique") {
-      return <SimulateurPhotovoltaique onPageChange={setCurrentPage} />;
-    }
+    if (currentPage === "simulateur") {
+  return <SimulateurRenoSoluces onPageChange={setCurrentPage} />;
+}
 
-    if (currentPage === "simulateur-isolation") {
-  return <SimulateurIsolation onPageChange={setCurrentPage} />;
-    }
-
-    if (currentPage === "simulateur-produire-mon-eau-chaude") {
-  return <SimulateurBallonThermodynamique onPageChange={setCurrentPage} />
-    }
-
-    if (currentPage === "simulateur-renovation-ampleur") {
-  return <SimulateurRenovationAmpleur onPageChange={setCurrentPage} />
-    }
-
-    if (currentPage === "simulateur-pompe-a-chaleur-air-eau") {
-  return <SimulateurPACAirEau onPageChange={setCurrentPage} />
-    }
-
-    if (currentPage === "simulateur-pompe-a-chaleur-air-air") {
-  return <SimulateurPACAirAir onPageChange={setCurrentPage} />
-    }
-
-    if (currentPage === "simulateur-aides") {
-  return <SimulateurAides onPageChange={setCurrentPage} />
-    }
-
-    if (currentPage === "simulateur-autoconsommation") {
-  return <SimulateurAutoconso onPageChange={setCurrentPage} />
-    }
 
     // Page d’accueil
     return (

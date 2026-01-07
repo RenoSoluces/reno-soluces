@@ -286,7 +286,7 @@ const NotreIdentite: React.FC<Props> = ({ onPageChange }) => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <button
-                onClick={() => onPageChange("prise-de-rdv")}
+                onClick={() => onPageChange("contact")}
                 className="inline-flex items-center justify-center gap-2 bg-green-400 hover:bg-green-300 text-green-900 font-semibold px-8 py-4 rounded-full shadow-lg transition-colors"
               >
                 <Phone className="w-5 h-5" />

@@ -30,7 +30,7 @@ const MaPrimeRenov: React.FC<{ onPageChange: (page: string) => void }> = ({ onPa
               </span>
             </div>
             <button
-              onClick={() => onPageChange("simulateur-aides")}
+              onClick={() => onPageChange("simulateur")}
               className="px-8 py-4 bg-yellow-300 text-emerald-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
             >
               💡 Je calcule mes aides
@@ -144,7 +144,7 @@ const MaPrimeRenov: React.FC<{ onPageChange: (page: string) => void }> = ({ onPa
             100 % gratuit et sans engagement.
           </p>
           <button
-            onClick={() => onPageChange("simulateur-aides")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-yellow-300 hover:bg-yellow-200 text-emerald-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             🚀 Je calcule mes aides

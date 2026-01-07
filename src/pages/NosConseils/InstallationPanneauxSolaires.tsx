@@ -146,7 +146,7 @@ const InstallationPanneauxSolaires: React.FC<{ onPageChange: (page: string) => v
             les aides disponibles pour votre installation.
           </p>
           <button
-            onClick={() => onPageChange("simulateur-photovoltaique")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             ☀️ Estimer mes économies

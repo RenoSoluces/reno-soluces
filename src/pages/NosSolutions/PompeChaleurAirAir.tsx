@@ -11,7 +11,6 @@ import FonctionnementPompeChaleurSection from '../../components/PompeChaleurAirA
 import TypesPompeChaleurSection from '../../components/PompeChaleurAirAir/TypesPompeChaleurSection';
 import InstallationProfessionnelSection from '../../components/PompeChaleurAirAir/InstallationProfessionnelSection';
 import AidesFinancieresSection from '../../components/PompeChaleurAirAir/AidesFinancieresSection';
-import AvisRenoSolucesSection from '../../components/PompeChaleurAirAir/AvisRenoSolucesSection';
 import FaqSection from '../../components/PompeChaleurAirAir/FaqSection';
 
 interface PompeChaleurAirAirProps {
@@ -35,7 +34,6 @@ const PompeChaleurAirAir: React.FC<PompeChaleurAirAirProps> = ({ onPageChange })
       <TypesPompeChaleurSection />
       <InstallationProfessionnelSection />
       <AidesFinancieresSection onPageChange={onPageChange}/>
-      <AvisRenoSolucesSection />
       <FaqSection onPageChange={onPageChange} />
       
       <Actualites onPageChange={onPageChange} />

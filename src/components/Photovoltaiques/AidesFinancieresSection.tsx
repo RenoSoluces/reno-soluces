@@ -68,7 +68,7 @@ export default function AidesFinancieres({ onPageChange }: { onPageChange: (page
           <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mt-6">
             Afin de promouvoir les énergies renouvelables, l’État a mis en place diverses{' '}
             <span 
-            onClick={() => onPageChange("prime-autoconsommation")}
+            onClick={() => onPageChange("simulateur")}
             className="text-green-500 underline cursor-pointer hover:text-green-600 transition-colors">
               aides financières pour l’installation de panneaux photovoltaïques
             </span>. Voici les principales subventions disponibles :
@@ -103,7 +103,7 @@ export default function AidesFinancieres({ onPageChange }: { onPageChange: (page
         {/* Bouton CTA */}
         <div className="text-center">
           <button
-            onClick={() => onPageChange('simulateur-photovoltaique')}
+            onClick={() => onPageChange('simulateur')}
             className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center gap-2"
           >
             J’estime mes aides

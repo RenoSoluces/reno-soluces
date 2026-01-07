@@ -41,7 +41,7 @@ interface HeroSectionProps {
 
                 <div className="space-y-4">
                   <button 
-                  onClick={() => onPageChange && onPageChange('simulateur-isolation')} 
+                  onClick={() => onPageChange && onPageChange('simulateur')} 
                   className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto"
                   >
                     Estimer mes économies

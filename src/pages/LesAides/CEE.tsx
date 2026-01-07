@@ -31,7 +31,7 @@ const CEE: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
               </span>
             </div>
             <button
-              onClick={() => onPageChange("simulateur-aides")}
+              onClick={() => onPageChange("simulateur")}
               className="px-8 py-4 bg-yellow-300 text-blue-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
             >
               ⚡ Je profite des CEE
@@ -161,7 +161,7 @@ const CEE: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
             Simulation gratuite, accompagnement complet, travaux réalisés par des pros RGE.
           </p>
           <button
-            onClick={() => onPageChange("simulateur-aides")}
+            onClick={() => onPageChange("simulateur")}
             className="bg-yellow-300 hover:bg-yellow-200 text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
           >
             🚀 Je simule mes aides

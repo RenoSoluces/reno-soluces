@@ -109,11 +109,12 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onPageChange }) => {
         </div>
 
         <button 
-          onClick={() => onPageChange && onPageChange('simulateur-aides')}
-          className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md font-medium mb-4 transition-colors"
-        >
-          {slides[currentSlide].cta}
-        </button>
+  onClick={() => onPageChange("simulateur")}
+  className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md font-medium mb-4 transition-colors"
+>
+  {slides[currentSlide].cta}
+</button>
+
         
         <p className="text-xs text-gray-300 mb-6">
           Gratuit et sans engagement.

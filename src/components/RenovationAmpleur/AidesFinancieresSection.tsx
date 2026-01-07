@@ -47,7 +47,7 @@ const AidesFinancieresSection: React.FC<AidesFinancieresSectionProps> = ({ onPag
 
         <div className="mt-12">
           <button 
-          onClick={() => onPageChange && onPageChange('simulateur-renovation-ampleur')}
+          onClick={() => onPageChange && onPageChange('simulateur')}
           className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
             Simuler mes aides
           </button>
