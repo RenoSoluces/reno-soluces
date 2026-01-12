@@ -1,44 +1,74 @@
 // src/utils/sendSimulation.ts
 
 export type SimulationPayload = {
-  simulateur: string;
   project: string;
 
-  // Contact (optionnel)
+  // Contact
   firstName?: string;
   lastName?: string;
   email?: string;
   phone?: string;
   consent?: boolean;
 
-  // Logement (optionnel)
+  // Logement
   address?: string;
   postalCode?: string;
   city?: string;
-  status?: string;
   heating?: string;
 
-  // Résultat
+  // Simulation
   simulationResult: string;
-
-  // Données brutes (toujours présentes)
   rawData: Record<string, any>;
+
+  // Origine du lead
+  source?: "Simulation" | "Demande de RDV";
 };
 
 export async function sendSimulation(
   data: SimulationPayload
 ): Promise<{ success: boolean }> {
+
+  const payload = {
+    // Identité du simulateur
+    simulateur: "Simulateur Reno Soluces",
+
+    // Source du lead
+    source: data.source || "Simulation",
+
+    // Contact
+    firstName: data.firstName || "",
+    lastName: data.lastName || "",
+    email: data.email || "",
+    phone: data.phone || "",
+    consent: data.consent === true,
+
+    // Logement / projet
+    address: data.address || "",
+    postalCode: data.postalCode || "",
+    city: data.city || "",
+    project: data.project || "",
+    heating: data.heating || "",
+
+    // Résultat simulation
+    simulationResult: data.simulationResult,
+
+    // Données techniques
+    rawData: JSON.stringify(data.rawData || {}),
+  };
+
   try {
-    const response = await fetch("/.netlify/functions/submitSimulator", {
+    const response = await fetch("/.netlify/functions/submitForm", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
-      throw new Error("Erreur lors de l'envoi de la simulation");
+      const errorText = await response.text();
+      console.error("❌ Erreur Netlify submitForm:", errorText);
+      throw new Error("Erreur lors de l'envoi vers Airtable");
     }
 
     return await response.json();
