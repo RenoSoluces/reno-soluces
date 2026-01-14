@@ -1,7 +1,7 @@
 import Airtable from "airtable";
 
 export async function handler(event) {
-  console.log("🚀 submitForm exécuté");
+  console.log("🚀 submitSimulation exécuté");
 
   if (event.httpMethod !== "POST") {
     return {
@@ -22,21 +22,19 @@ export async function handler(event) {
       "Prénom": data.firstName || "",
       "Email": data.email || "",
       "Téléphone": data.phone || "",
-      "Adresse": data.address || "",
-      "Code Postal": data.postalCode || "",
-      "Ville": data.city || "",
 
       "Projet": data.project || "",
       "Type de chauffage": data.heating || "",
 
-      "Date RDV": data.appointmentDate || "",
-      "Heure RDV": data.appointmentTime || "",
+      "Simulateur": "Simulateur Reno Soluces",
+      "Résultat simulation": data.simulationResult || "",
+      "Données simulation": JSON.stringify(data.rawData || {}),
 
-      "Source": "Demande de RDV",
+      "Source": "Simulation",
       "Consentement": data.consent === true,
     };
 
-    console.log("🧩 RDV envoyé :", fields);
+    console.log("🧩 Simulation envoyée :", fields);
 
     const record = await base(process.env.AIRTABLE_TABLE_NAME).create(fields);
 
@@ -46,7 +44,7 @@ export async function handler(event) {
     };
 
   } catch (error) {
-    console.error("🔥 submitForm error:", error);
+    console.error("🔥 submitSimulation error:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
