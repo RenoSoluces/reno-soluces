@@ -20,14 +20,14 @@ export async function handler(event) {
     const fields = {
       "Nom": data.lastName || "",
       "Prénom": data.firstName || "",
-      "Email": data.email || "",
-      "Téléphone": data.phone || "",
+      "Email": data.email || "", 
+      "Téléphone": data.phone || "", 
 
       "Projet": data.project || "",
       "Type de chauffage": data.heating || "",
 
       "Simulateur": "Simulateur Reno Soluces",
-      "Résultat simulation": data.simulationResult || "",
+      "Résultat Simulation": data.simulationResult || "",
       "Données simulation": JSON.stringify(data.rawData || {}),
 
       "Source": "Simulation",

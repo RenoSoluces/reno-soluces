@@ -1,4 +1,4 @@
-// src/pages/SimulateurAides.tsx
+// src/pages/SimulateurRenoSoluces.tsx
 import React, { useEffect, useMemo, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -14,6 +14,8 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { sendSimulation } from "../../utils/sendSimulation";
+
 
 /**
  * SimulateurAides
@@ -41,11 +43,26 @@ const produitOptions = [
   { key: "renovation-ampleur", label: "Rénovation d'ampleur", icon: <Wrench /> },
 ];
 
+const PRODUIT_LABELS: Record<string, string> = {
+  "pac-air-eau": "Pompe à Chaleur",
+  "pac-air-air": "Pompe à Chaleur",
+  "ballon": "Ballon Thermodynamique",
+  "isolation-combles": "Isolation",
+  "isolation-exterieure": "Isolation",
+  "isolation-plancher": "Isolation",
+  "renovation-ampleur": "Rénovation d'ampleur",
+};
+
 const totalSteps = 8;
 
-const SimulateurRenoSoluces: React.FC<{ onPageChange: (page: string) => void }> = ({
+type SimulateurRenoSolucesProps = {
+  onPageChange: (page: string) => void;
+};
+
+const SimulateurRenoSoluces = ({
   onPageChange,
-}) => {
+}: SimulateurRenoSolucesProps) => {
+
   const [step, setStep] = useState<number>(1);
 
   // form fields
@@ -225,35 +242,48 @@ const SimulateurRenoSoluces: React.FC<{ onPageChange: (page: string) => void }> 
   };
 
   // popup submit
-  const handleSubmitContact = () => {
-    if (
-      !formContact.prenom ||
-      !formContact.nom ||
-      !formContact.telephone ||
-      !formContact.email ||
-      !formContact.consent
-    ) {
-      alert("Merci de compléter tous les champs et d'accepter d'être contacté.");
-      return;
-    }
+  const handleSubmitContact = (): void => {
+  if (!formContact.prenom || !formContact.nom || !formContact.telephone || !formContact.email || !formContact.consent) {
+    alert("Merci de compléter tous les champs et d'accepter d'être contacté.");
+    return;
+  }
 
-    // temporary confirmation toast
-    setShowPopup(false);
-    setShowConfirmation(true);
+  setShowPopup(false);
+  setShowConfirmation(true);
 
-    // compute results and go to results after short pause
-    setTimeout(() => {
-      setShowConfirmation(false);
-      computeResults();
-      setStep(totalSteps + 1);
-    }, 1600);
+  setTimeout(() => {
+    setShowConfirmation(false);
+    computeResults();
+    setStep(totalSteps + 1);
+  }, 1600);
 
-    // TODO: send contact + simulation to CRM here
-    console.log("Envoi CRM placeholder:", {
-      contact: formContact,
-      form: { adresse, statut, chauffage, produit, annee, occupants, facture, revenu },
-    });
-  };
+  sendSimulation({
+    simulateur: "Simulateur Reno Soluces",
+    project: PRODUIT_LABELS[produit] || "Autre",
+    firstName: formContact.prenom,
+    lastName: formContact.nom,
+    email: formContact.email,
+    phone: formContact.telephone,
+    consent: formContact.consent,
+    address: adresse,
+    heating: chauffage,
+    simulationResult: JSON.stringify(resultats),
+    rawData: {
+      adresse,
+      statut,
+      chauffage,
+      produit,
+      annee,
+      occupants,
+      facture,
+      revenu,
+    },
+  })
+    .then(() => console.log("✅ Simulation envoyée"))
+    .catch((err) => console.error("❌ Erreur envoi simulation", err));
+}; // <-- FERME ICI handleSubmitContact
+
+
 
   // UI icon class
   const iconClass = "w-5 h-5 text-emerald-600";
