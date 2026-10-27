@@ -5,7 +5,7 @@ interface PourquoiInstallerBatterieSectionProps {
   onPageChange?: (page: string) => void;
 }
 
-const PourquoiInstallerBatterieSection: React.FC<PourquoiInstallerBatterieSectionProps> = ({ onPageChange }) => {
+const PourquoiInstallerBatterieSection: React.FC<PourquoiInstallerBatterieSectionProps> = () => {
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,12 +29,10 @@ const PourquoiInstallerBatterieSection: React.FC<PourquoiInstallerBatterieSectio
   en permettant de conserver une partie de l'énergie produite pour une utilisation ultérieure.
 </p>
 
-            <button 
-              onClick={() => onPageChange && onPageChange('contact')}
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-            >
+            <a href="/contact"
+              className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors">
               Contactez un éco-technicien 
-            </button>
+            </a>
           </div>
 
           {/* Illustration batterie */}

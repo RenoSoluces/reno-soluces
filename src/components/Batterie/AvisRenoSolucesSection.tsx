@@ -1,5 +1,5 @@
 import React from 'react';
-import Batterie4 from '../../assets/Batterie4.jpg';
+import Batterie4 from '../../assets/Batterie4.webp';
 
 const AvisRenoSolucesSection: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const AvisRenoSolucesSection: React.FC = () => {
           
           {/* Partie gauche - Image */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={Batterie4}
               alt="Cristaux de lithium"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

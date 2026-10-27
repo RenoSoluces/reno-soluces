@@ -241,12 +241,10 @@ const InstallationPacAirEau: React.FC<{ onPageChange: (page: string) => void }> 
             Demandez dès maintenant une étude technique gratuite pour connaître la faisabilité, 
             les aides disponibles et le dimensionnement optimal pour votre logement.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             ⚡ Estimer mes économies
-          </button>
+          </a>
         </section>
       </main>
 

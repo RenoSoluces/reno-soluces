@@ -1,6 +1,7 @@
-import { blogArticles, articleSlug, isArticleIndexable } from '../data/blogArticles';
+import { findArticleBySlug, isArticleIndexable } from '../data/blogArticles';
+import { SITE_URL } from './site';
 
-export const SITE_URL = 'https://renosoluces.fr';
+export { SITE_URL };
 export const GUIDES_PREFIX = '/guides/';
 
 /** Clé de page interne -> URL publique. Source unique pour l'application, le sitemap et le pré-rendu. */
@@ -261,7 +262,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
   'mentions-legales': {
     title: 'Mentions légales | Reno Soluces',
-    description: 'Mentions légales du site Reno Soluces.',
+    description: 'Mentions légales du site Reno Soluces : éditeur, hébergement, propriété intellectuelle et coordonnées de contact.',
   },
   'politique-confidentialite': {
     title: 'Politique de confidentialité | Reno Soluces',
@@ -275,6 +276,11 @@ export const PAGE_META: Record<string, PageMeta> = {
     title: 'Conditions générales | Reno Soluces',
     description: 'Conditions générales d’utilisation des services de Reno Soluces.',
   },
+  'not-found': {
+    title: 'Page introuvable | Reno Soluces',
+    description: 'Cette page n’existe pas ou a été déplacée. Retrouvez nos solutions, nos guides et le formulaire de demande.',
+    noindex: true,
+  },
   contact: {
     title: 'Décrire mon projet de rénovation | Reno Soluces',
     description:
@@ -282,16 +288,59 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 };
 
-/** Résumé d'un article du blog pour l'affichage et le pré-rendu. */
+/** Ajoute « | Reno Soluces » au titre si la longueur totale reste lisible dans Google. */
+const withBrand = (title: string): string => (title.length + 15 <= 65 ? `${title} | Reno Soluces` : title);
+
+/** Métadonnées d'un article du blog. */
 export function getArticleMeta(slug: string): PageMeta | undefined {
-  const article = blogArticles.find((a) => articleSlug(a) === slug);
+  const article = findArticleBySlug(slug);
   if (!article) return undefined;
-  const excerpt = article.excerpt.length > 155 ? `${article.excerpt.slice(0, 152).trimEnd()}…` : article.excerpt;
+  const excerpt = article.excerpt.length > 160 ? `${article.excerpt.slice(0, 157).trimEnd()}…` : article.excerpt;
   return {
-    title: `${article.title} | Reno Soluces`,
+    title: withBrand(article.seoTitle ?? article.title),
     description: excerpt,
     noindex: !isArticleIndexable(article),
   };
 }
 
 export const articleUrl = (slug: string): string => `${GUIDES_PREFIX}${slug}`;
+
+// ---------------------------------------------------------------------------
+// Résolution d'une URL en page à afficher
+// ---------------------------------------------------------------------------
+
+export interface SiteLocation {
+  page: string;
+  articleSlug: string | null;
+}
+
+const PATH_TO_PAGE: Record<string, string> = Object.fromEntries(
+  Object.entries(PAGE_ROUTES).map(([key, path]) => [path, key])
+);
+
+/** Détermine la page (et l'éventuel article) correspondant à une URL. Les URL inconnues mènent à la page 404. */
+export function resolveLocation(pathname: string): SiteLocation {
+  const path = pathname.replace(/\/$/, '') || '/';
+  const page = PATH_TO_PAGE[path];
+  if (page) return { page, articleSlug: null };
+  if (path.startsWith(GUIDES_PREFIX)) {
+    const slug = path.slice(GUIDES_PREFIX.length);
+    if (findArticleBySlug(slug)) return { page: 'notre-blog', articleSlug: slug };
+  }
+  return { page: 'not-found', articleSlug: null };
+}
+
+export function getPageMeta(location: SiteLocation): PageMeta {
+  return (
+    (location.articleSlug ? getArticleMeta(location.articleSlug) : undefined) ||
+    PAGE_META[location.page] ||
+    PAGE_META['not-found']
+  );
+}
+
+export function pathFor(location: SiteLocation): string {
+  if (location.articleSlug) return articleUrl(location.articleSlug);
+  return PAGE_ROUTES[location.page] ?? '/';
+}
+
+export const canonicalUrl = (location: SiteLocation): string => `${SITE_URL}${pathFor(location)}`;

@@ -4,7 +4,7 @@ interface DescriptionSectionProps {
   onPageChange: (page: string) => void;
 }
 
-const DescriptionSection: React.FC<DescriptionSectionProps> = ({ onPageChange }) => {
+const DescriptionSection: React.FC<DescriptionSectionProps> = () => {
   return (
     <section className="bg-white py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -16,12 +16,10 @@ const DescriptionSection: React.FC<DescriptionSectionProps> = ({ onPageChange })
           sur la durée d’utilisation du matériel et valorisez votre bien immobilier.
         </p>
 
-        <button
-          onClick={() => onPageChange('contact')}
-          className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-        >
+        <a href="/contact"
+          className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors">
           J’installe des panneaux photovoltaïques
-        </button>
+        </a>
       </div>
     </section>
   );

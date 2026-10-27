@@ -36,7 +36,7 @@ const IsolationCombles: React.FC<IsolationComblesProps> = ({ onPageChange }) => 
       <AvantagesInconvenientsCombles />
       <IsolezComblesAvecRenoSoluces onPageChange={onPageChange} />
       <FaqSection />
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Isolation" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

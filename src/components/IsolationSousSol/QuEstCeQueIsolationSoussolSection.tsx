@@ -1,5 +1,5 @@
 import React from 'react';
-import PlancherBas2 from '../../assets/PlancherBas2.jpg';
+import PlancherBas2 from '../../assets/PlancherBas2.webp';
 
 const QuEstCeQueIsolationSoussolSection: React.FC = () => {
   return (
@@ -32,7 +32,7 @@ const QuEstCeQueIsolationSoussolSection: React.FC = () => {
 
           {/* Partie droite - Image */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={PlancherBas2}
               alt="Isolation des planchers bas en cours"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

@@ -42,7 +42,7 @@ const PanneauxPhotovoltaiques: React.FC<Props> = ({ onPageChange }) => {
       <FaqSection onPageChange={onPageChange} />
 
       {/* Actualités (venant du dossier général `components/`) */}
-      <ActualitesSection onPageChange={onPageChange} />
+      <ActualitesSection category="Photovoltaïque" />
 
       {/* Footer global */}
       <Footer onPageChange={onPageChange} />

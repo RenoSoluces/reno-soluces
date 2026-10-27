@@ -24,13 +24,11 @@ const ParcoursPhotovoltaiques: React.FC<ParcoursPhotovoltaiquesProps> = ({
       <section className="bg-green-700 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <button
-              onClick={() => onPageChange('panneaux-photovoltaiques')}
-              className="flex items-center space-x-2 text-green-200 hover:text-white transition-colors"
-            >
+            <a href="/panneaux-photovoltaiques"
+              className="flex items-center space-x-2 text-green-200 hover:text-white transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span>Retour aux panneaux photovoltaïques</span>
-            </button>
+            </a>
           </div>
 
           <div className="text-center text-white">

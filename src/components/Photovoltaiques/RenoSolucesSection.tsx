@@ -1,6 +1,6 @@
 // components/RenoSolucesSection.tsx
 import { Check } from 'lucide-react';
-import Panneaux4 from '../../assets/Panneaux4.jpg';
+import Panneaux4 from '../../assets/Panneaux4.webp';
 
 interface Props {
   onPageChange: (page: string) => void;
@@ -27,7 +27,7 @@ const points = [
   },
 ];
 
-export default function RenoSolucesSection({ onPageChange }: Props) {
+export default function RenoSolucesSection(_props: Props) {
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,18 +54,16 @@ export default function RenoSolucesSection({ onPageChange }: Props) {
             </div>
 
             <div className="pt-4">
-              <button
-                onClick={() => onPageChange('contact')}
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-              >
+              <a href="/contact"
+                className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors">
                 Demander à être contacté
-              </button>
+              </a>
             </div>
           </div>
 
           {/* Image */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={Panneaux4}
               alt="Maison équipée de panneaux solaires"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

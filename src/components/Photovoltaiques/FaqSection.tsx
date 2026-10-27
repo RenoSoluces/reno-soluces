@@ -22,7 +22,7 @@ Le terme "panneau solaire" désigne aussi bien les panneaux photovoltaïques que
   },
 ];
 
-const FaqSection: React.FC<PanneauxPhotovoltaiquesProps> = ({ onPageChange }) => {
+const FaqSection: React.FC<PanneauxPhotovoltaiquesProps> = () => {
   const [expandedQuestion, setExpandedQuestion] = React.useState<number | null>(null);
 
   const toggleQuestion = (index: number) => {
@@ -90,12 +90,10 @@ const FaqSection: React.FC<PanneauxPhotovoltaiquesProps> = ({ onPageChange }) =>
           ))}
         </div>
 
-        <button
-          onClick={() => onPageChange('faq')}
-          className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-        >
+        <a href="/faq"
+          className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
           Voir toutes les questions
-        </button>
+        </a>
       </div>
     </section>
   );

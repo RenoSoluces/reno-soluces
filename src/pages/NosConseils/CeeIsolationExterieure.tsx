@@ -253,12 +253,10 @@ const CeeIsolationExterieure: React.FC<{ onPageChange: (page: string) => void }>
             Nos éco-techniciens peuvent vous aider à comprendre les dispositifs susceptibles de concerner votre projet ; l’éligibilité et le montant des aides restent soumis aux conditions applicables. 
             d'isolation thermique par l'extérieur dans les meilleures conditions.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             🎯 Estimer mes aides
-          </button>
+          </a>
         </section>
       </main>
 

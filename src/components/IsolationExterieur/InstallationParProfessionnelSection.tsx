@@ -1,7 +1,7 @@
 // src/components/IsolationExterieure/InstallationParProfessionnelSection.tsx
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
-import Exterieur3 from '../../assets/Exterieur3.jpeg';
+import Exterieur3 from '../../assets/Exterieur3.webp';
 
 const InstallationParProfessionnelSection: React.FC = () => {
   return (
@@ -31,7 +31,7 @@ const InstallationParProfessionnelSection: React.FC = () => {
           {/* Partie droite - Image illustrative */}
           <div className="relative">
             <div className="bg-gray-100 rounded-2xl p-6 flex items-center justify-center">
-              <img
+              <img loading="lazy" decoding="async"
                 src={Exterieur3}
                 alt="Artisan posant un isolant"
                 className="rounded-xl shadow-md object-cover w-full h-full max-h-96"

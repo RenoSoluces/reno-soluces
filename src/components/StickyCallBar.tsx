@@ -9,7 +9,7 @@ interface Props {
 }
 
 /** Barre fixe en bas de l'écran sur mobile : un appel ou une demande en un geste. */
-export default function StickyCallBar({ onPageChange, hidden = false }: Props) {
+export default function StickyCallBar({ hidden = false }: Props) {
   if (hidden) return null;
 
   return (
@@ -24,12 +24,10 @@ export default function StickyCallBar({ onPageChange, hidden = false }: Props) {
       >
         <Phone size={17} /> Appeler
       </a>
-      <button
-        onClick={() => onPageChange('contact')}
-        className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#173b32] px-4 py-3 text-sm font-bold text-[#173b32]"
-      >
+      <a href="/contact"
+        className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#173b32] px-4 py-3 text-sm font-bold text-[#173b32]">
         Décrire mon projet <ArrowRight size={16} />
-      </button>
+      </a>
     </div>
   );
 }

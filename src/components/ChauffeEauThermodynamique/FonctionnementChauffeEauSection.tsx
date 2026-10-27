@@ -1,5 +1,5 @@
 import React from 'react';
-import BallonThermo3 from '../../assets/BallonThermo3.jpeg';
+import BallonThermo3 from '../../assets/BallonThermo3.webp';
 
 const FonctionnementChauffeEauSection: React.FC = () => {
   return (
@@ -57,7 +57,7 @@ const FonctionnementChauffeEauSection: React.FC = () => {
 
           {/* Partie droite - Image */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={BallonThermo3}
               alt="Schéma de fonctionnement chauffe-eau thermodynamique"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

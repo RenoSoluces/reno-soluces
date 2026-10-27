@@ -6,7 +6,7 @@ interface IsolezComblesAvecRenoSoluces {
   onPageChange?: (page: string) => void;
 }
 
-const IsolezComblesAvecRenoSoluces: React.FC<IsolezComblesAvecRenoSoluces> = ({ onPageChange }) => {
+const IsolezComblesAvecRenoSoluces: React.FC<IsolezComblesAvecRenoSoluces> = () => {
   return (
     <section className="bg-emerald-900 text-white py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -31,11 +31,10 @@ const IsolezComblesAvecRenoSoluces: React.FC<IsolezComblesAvecRenoSoluces> = ({ 
         </div> 
 
         <div className="mt-10">
-          <button 
-          onClick={() => onPageChange && onPageChange('contact')}
-          className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
+          <a href="/contact"
+          className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
             Prendre Rendez-vous
-          </button>
+          </a>
           <p className="text-green-200 text-sm mt-2">Demande gratuite et sans engagement</p>
         </div>
       </div>

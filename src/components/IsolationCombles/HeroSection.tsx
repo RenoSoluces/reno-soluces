@@ -1,13 +1,13 @@
 // src/components/IsolationCombles/HeroSection.tsx
 import React from 'react';
 import { Check } from 'lucide-react';
-import Combles1 from '../../assets/Combles1.jpeg';
+import Combles1 from '../../assets/Combles1.webp';
 
 interface HeroSectionProps {
   onPageChange?: (page: string) => void;
 }
 
-  const HeroSection: React.FC<HeroSectionProps> = ({ onPageChange }) => {
+  const HeroSection: React.FC<HeroSectionProps> = () => {
   
   return (
     <section className="bg-gray-50 py-16">
@@ -19,9 +19,9 @@ interface HeroSectionProps {
               {/* Partie gauche - Contenu */}
               <div className="bg-emerald-900 p-12 text-white flex flex-col justify-center">
                 <h1 className="text-4xl font-bold mb-8 leading-tight">
-                  Isolez vos combles<br />
-                  pour gagner en confort<br />
-                  et réduire vos factures
+                  Isolation des combles :<br />
+                  gagnez en confort<br />
+                  et réduisez vos factures
                 </h1>
 
                 <div className="space-y-4 mb-8">
@@ -40,12 +40,10 @@ interface HeroSectionProps {
                 </div>
 
                 <div className="space-y-4">
-                  <button 
-                  onClick={() => onPageChange && onPageChange('contact')} 
-                  className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto"
-                  >
+                  <a href="/contact" 
+                  className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto">
                     Demander à être contacté
-                  </button>
+                  </a>
                   <p className="text-green-200 text-sm">
                     Demande gratuite et sans engagement.
                   </p>

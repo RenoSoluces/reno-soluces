@@ -67,7 +67,7 @@ const ConditionsGeneralesVente: React.FC<{ onPageChange: (page: string) => void 
 
       <section>
         <h2 className="text-2xl font-semibold mb-3">9. Données personnelles</h2>
-        <p>Les données collectées dans le cadre des demandes sont traitées conformément à la <button className="text-emerald-700 underline" onClick={() => onPageChange('politique-confidentialite')}>Politique de confidentialité</button>. Elles peuvent être transmises aux professionnels partenaires lorsque cette transmission est nécessaire à la mise en relation demandée.</p>
+        <p>Les données collectées dans le cadre des demandes sont traitées conformément à la <a href="/politique-confidentialite" className="inline-block text-emerald-700 underline">Politique de confidentialité</a>. Elles peuvent être transmises aux professionnels partenaires lorsque cette transmission est nécessaire à la mise en relation demandée.</p>
       </section>
 
       <section>

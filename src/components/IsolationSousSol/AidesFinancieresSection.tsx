@@ -5,7 +5,7 @@ interface AidesFinancieresSectionProps {
   onPageChange?: (page: string) => void;
 }
 
-const AidesFinancieresSection: React.FC<AidesFinancieresSectionProps> = ({ onPageChange }) => {
+const AidesFinancieresSection: React.FC<AidesFinancieresSectionProps> = () => {
   return (
     <section className="bg-emerald-900 py-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
@@ -46,11 +46,10 @@ const AidesFinancieresSection: React.FC<AidesFinancieresSectionProps> = ({ onPag
         </div>
 
         <div className="mt-12">
-          <button 
-          onClick={() => onPageChange && onPageChange('contact')}
-          className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
+          <a href="/contact"
+          className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
             Simuler mes aides
-          </button>
+          </a>
           
           <p className="text-green-200 text-sm mt-2">Gratuit et sans engagement</p>
         </div>

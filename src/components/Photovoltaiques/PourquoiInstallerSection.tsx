@@ -5,7 +5,7 @@ interface PourquoiInstallerSectionProps {
   onPageChange: (page: string) => void;
 }
 
-const PourquoiInstallerSection: React.FC<PourquoiInstallerSectionProps> = ({ onPageChange }) => {
+const PourquoiInstallerSection: React.FC<PourquoiInstallerSectionProps> = () => {
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,12 +20,10 @@ const PourquoiInstallerSection: React.FC<PourquoiInstallerSectionProps> = ({ onP
         {/* Sous-titre */}
         <div className="text-center mb-12">
           <p className="text-lg text-gray-700">
-            <button
-              onClick={() => onPageChange("fonctionnement-panneau-solaire")}
-              className="text-green-500 underline cursor-pointer hover:text-green-600 transition-colors bg-transparent border-none p-0"
-            >
+            <a href="/guides/fonctionnement-panneau-solaire"
+              className="inline-block text-green-500 underline cursor-pointer hover:text-green-600 transition-colors bg-transparent border-none p-0">
               Les avantages des panneaux photovoltaïques
-            </button>{" "}
+            </a>{" "}
             sont nombreux et aussi<br />
             bien environnementaux que financiers.
           </p>

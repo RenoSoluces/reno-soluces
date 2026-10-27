@@ -4,7 +4,7 @@ interface PrendreRendezVousProps {
   onPageChange?: (page: string) => void;
 }
 
-const PrendreRendezVous: React.FC<PrendreRendezVousProps> = ({ onPageChange }) => {
+const PrendreRendezVous: React.FC<PrendreRendezVousProps> = () => {
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,12 +17,10 @@ const PrendreRendezVous: React.FC<PrendreRendezVousProps> = ({ onPageChange }) =
           </h2>
 
           {/* Bouton CTA */}
-          <button 
-            onClick={() => onPageChange && onPageChange('contact')}
-            className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
-          >
+          <a href="/contact"
+            className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform">
             Prendre rendez-vous
-          </button>
+          </a>
         </div>
       </div>
     </section>

@@ -657,12 +657,10 @@ const PrixPanneauxSolaires: React.FC<{
             orientation adaptée à votre situation.
           </p>
 
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
-          >
+          <a href="/contact"
+            className="inline-block bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
             Nous contacter
-          </button>
+          </a>
         </section>
       </main>
 

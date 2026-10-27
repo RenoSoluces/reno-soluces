@@ -1,7 +1,15 @@
 import { StrictMode, useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { Analytics } from '@vercel/analytics/react';
 import App from './App.tsx';
+// Polices hébergées avec le site (plus rapide et sans appel à Google Fonts).
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-600.css';
+import '@fontsource/dm-sans/latin-700.css';
+import '@fontsource/playfair-display/latin-600.css';
+import '@fontsource/playfair-display/latin-700.css';
+import '@fontsource/playfair-display/latin-600-italic.css';
 import './index.css';
 
 const GTM_ID = 'GTM-PHTN5VH6';
@@ -145,10 +153,20 @@ function ConsentAwareAnalytics() {
   return enabled ? <Analytics /> : null;
 }
 
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!;
+
+const app = (
   <StrictMode>
     <App />
     <ConsentAwareGoogleTagManager />
     <ConsentAwareAnalytics />
   </StrictMode>
 );
+
+// Les pages sont prérendues au build : on « hydrate » le HTML existant au lieu de le
+// reconstruire. En développement, la page est vide et on l'affiche normalement.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app);
+} else {
+  createRoot(container).render(app);
+}

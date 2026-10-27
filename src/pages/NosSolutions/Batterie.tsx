@@ -48,7 +48,7 @@ const Batterie: React.FC<BatterieProps> = ({ onPageChange }) => {
       <InstallationFinancementSection />
       <ComparaisonAgmGelSection />
       <FaqSection onPageChange={onPageChange} />
-      <ActualitesSection onPageChange={onPageChange} />
+      <ActualitesSection category="Photovoltaïque" />
       
       <Footer onPageChange={onPageChange} />
     </div>

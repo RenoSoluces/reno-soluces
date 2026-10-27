@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Actualites from "../../components/Actualites";
 import { CheckCircle, Euro, } from "lucide-react";
-import PTZ from '../../assets/PTZ.jpg';
+import PTZ from '../../assets/PTZ.webp';
 
 const PretTauxZero: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange }) => {
   return (
@@ -26,15 +26,13 @@ const PretTauxZero: React.FC<{ onPageChange: (page: string) => void }> = ({ onPa
               <Euro className="w-6 h-6 text-yellow-300 mr-2" />
               <span className="text-indigo-100">Un financement sans intérêts, sous réserve des conditions du dispositif</span>
             </div>
-            <button
-              onClick={() => onPageChange("contact")}
-              className="px-8 py-4 bg-yellow-300 text-blue-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
-            >
+            <a href="/contact"
+              className="inline-block px-8 py-4 bg-yellow-300 text-blue-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition">
               🚀 Je profite du PTZ
-            </button>
+            </a>
           </div>
           <div className="flex justify-center">
-            <img
+            <img loading="lazy" decoding="async"
               src={PTZ}
               alt="Éco-prêt à taux zéro"
               className="w-full max-w-md drop-shadow-2xl"
@@ -123,16 +121,14 @@ const PretTauxZero: React.FC<{ onPageChange: (page: string) => void }> = ({ onPa
             Financez vos travaux de rénovation énergétique à taux zéro et améliorez durablement
             le confort et la valeur de votre logement.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-yellow-300 hover:bg-yellow-200 text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-yellow-300 hover:bg-yellow-200 text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             🌍 Je lance mon projet
-          </button>
+          </a>
         </section>
       </main>
 
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Aides et financement" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

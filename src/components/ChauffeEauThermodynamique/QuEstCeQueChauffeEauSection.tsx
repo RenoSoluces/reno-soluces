@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wind, Zap } from 'lucide-react';
-import BallonThermo2 from '../../assets/BallonThermo2.jpg';
+import BallonThermo2 from '../../assets/BallonThermo2.webp';
 
 
 const QuEstCeQueChauffeEauSection: React.FC = () => {
@@ -15,7 +15,7 @@ const QuEstCeQueChauffeEauSection: React.FC = () => {
               <div className="relative">
                 {/* Chauffe-eau */}
                 <div className="w-24 h-48 bg-gray-600 rounded-lg relative mx-auto">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={BallonThermo2}
                     alt="Chauffe-eau thermodynamique"
                     className="w-full h-full object-cover rounded-lg"

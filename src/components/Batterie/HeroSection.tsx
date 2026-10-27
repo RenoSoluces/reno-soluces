@@ -1,12 +1,12 @@
 import React from 'react';
 import { Check } from 'lucide-react';
-import Batterie1 from '../../assets/Batterie1.jpg';
+import Batterie1 from '../../assets/Batterie1.webp';
 
 interface HeroSectionProps {
   onPageChange?: (page: string) => void;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ onPageChange }) => { 
+const HeroSection: React.FC<HeroSectionProps> = () => { 
 
   return (
     <section className="bg-gray-50 py-16">
@@ -18,9 +18,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onPageChange }) => {
               {/* Partie gauche - Contenu */}
               <div className="bg-emerald-900 p-12 text-white flex flex-col justify-center">
                 <h1 className="text-4xl font-bold mb-8 leading-tight">
-                  Stockez votre énergie solaire<br />
-                  avec une batterie adaptée<br />
-                  à vos besoins
+                  Batterie solaire :<br />
+                  stockez votre énergie<br />
+                  selon vos besoins
                 </h1>
 
                 <div className="space-y-4 mb-8"> 
@@ -39,12 +39,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onPageChange }) => {
                 </div>
 
                 <div className="space-y-4">
-                  <button 
-                    onClick={() => onPageChange && onPageChange('contact')}
-                    className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto"
-                  >
+                  <a href="/contact"
+                    className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto">
                     Demander à être contacté
-                  </button>
+                  </a>
                   <p className="text-green-200 text-sm">
                     Demande gratuite et sans engagement.
                   </p>

@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Actualites from "../../components/Actualites";
 import { Flame, CheckCircle } from "lucide-react";
-import CoupDePouce1 from '../../assets/CoupDePouce1.jpg';
+import CoupDePouce1 from '../../assets/CoupDePouce1.webp';
 
 const PouceChauffage: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange }) => {
   return (
@@ -16,8 +16,8 @@ const PouceChauffage: React.FC<{ onPageChange: (page: string) => void }> = ({ on
         <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-5xl font-extrabold mb-6">
-              Coup de Pouce Chauffage 🔥 <br />
-              <span className="text-yellow-300">Remplacez votre vieille chaudière</span>
+              Coup de pouce chauffage : <br />
+              <span className="text-yellow-300">remplacer une ancienne chaudière</span>
             </h1>
             <p className="text-lg leading-relaxed mb-6 text-orange-100">
               Cette aide de l’État vous permet de financer le remplacement de votre ancienne
@@ -29,15 +29,13 @@ const PouceChauffage: React.FC<{ onPageChange: (page: string) => void }> = ({ on
                 Une aide dont le montant dépend du projet et des conditions du dispositif
               </span>
             </div>
-            <button
-              onClick={() => onPageChange("contact")}
-              className="px-8 py-4 bg-yellow-300 text-red-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
-            >
+            <a href="/contact"
+              className="inline-block px-8 py-4 bg-yellow-300 text-red-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition">
               🚀 Je profite du Coup de Pouce
-            </button>
+            </a>
           </div>
           <div className="flex justify-center">
-            <img
+            <img loading="lazy" decoding="async"
               src={CoupDePouce1}
               alt="Coup de Pouce Chauffage"
               className="w-full max-w-md drop-shadow-2xl"
@@ -125,16 +123,14 @@ const PouceChauffage: React.FC<{ onPageChange: (page: string) => void }> = ({ on
             profiter des aides maximales.  
             Bénéficiez d’un accompagnement et, lorsque le dispositif l’exige, d’une mise en relation avec un professionnel disposant de la qualification RGE correspondante.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-yellow-300 hover:bg-yellow-200 text-red-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-yellow-300 hover:bg-yellow-200 text-red-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             🔥 Je simule mon Coup de Pouce
-          </button>
+          </a>
         </section>
       </main>
 
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Aides et financement" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

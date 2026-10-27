@@ -4,13 +4,13 @@ interface AccompagnementProps {
   onPageChange?: (page: string) => void;
 }
 
-const Accompagnement: React.FC<AccompagnementProps> = ({ onPageChange }) => {
+const Accompagnement: React.FC<AccompagnementProps> = () => {
   return (
     <section className="bg-[#fdf1d6] py-16">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Image à gauche */}
         <div className="w-full">
-          <img
+          <img loading="lazy" decoding="async"
             src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
             alt="Installation Reno Soluces"
             className="rounded-xl shadow-md w-full object-cover h-96"
@@ -23,12 +23,10 @@ const Accompagnement: React.FC<AccompagnementProps> = ({ onPageChange }) => {
             Reno Soluces vous accompagne <span className="text-green-500">au-delà</span> de votre installation
           </h2>
 
-          <button 
-            onClick={() => onPageChange && onPageChange('contact')}
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-full mb-8 transition-colors"
-          >
+          <a href="/contact"
+            className="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-full mb-8 transition-colors">
             Je demande un devis
-          </button>
+          </a>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Carte 1 */}

@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Actualites from "../../components/Actualites";
 import { CheckCircle, Euro } from "lucide-react";
-import TVA55 from '../../assets/TVA5.5.jpg';
+import TVA55 from '../../assets/TVA5.5.webp';
 
 const TVA: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange }) => {
   return (
@@ -16,7 +16,7 @@ const TVA: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-5xl font-extrabold mb-6">
-              TVA à taux réduit 🌿
+              TVA à taux réduit sur les travaux de rénovation énergétique
             </h1>
             <p className="text-lg leading-relaxed mb-6 text-emerald-100">
               Bénéficiez d’une TVA réduite pour vos travaux de rénovation énergétique et réalisez
@@ -28,15 +28,13 @@ const TVA: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
                 Une fiscalité avantageuse pour vos travaux de rénovation
               </span>
             </div>
-            <button
-              onClick={() => onPageChange("contact")}
-              className="px-8 py-4 bg-yellow-300 text-green-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
-            >
+            <a href="/contact"
+              className="inline-block px-8 py-4 bg-yellow-300 text-green-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition">
               🚀 Je profite de la TVA réduite
-            </button>
+            </a>
           </div>
           <div className="flex justify-center">
-            <img
+            <img loading="lazy" decoding="async"
               src={TVA55}
               alt="TVA à taux réduit"
               className="w-full max-w-md drop-shadow-2xl"
@@ -144,16 +142,14 @@ const TVA: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
             de rénovation énergétique. Ensemble, faisons de votre logement un espace plus confortable
             et plus économique.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-yellow-300 hover:bg-yellow-200 text-green-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-yellow-300 hover:bg-yellow-200 text-green-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             🌿 Je lance mon projet
-          </button>
+          </a>
         </section>
       </main>
 
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Aides et financement" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

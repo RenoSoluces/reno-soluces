@@ -36,7 +36,7 @@ const PompeChaleurAirEau: React.FC<PompeChaleurAirEauProps> = ({ onPageChange })
       <AidesFinancieresSection onPageChange={onPageChange}/>
       <FaqSection onPageChange={onPageChange} />
       
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Chauffage" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Zap, Home, Shield, Flame, Wind } from 'lucide-react';
+import { Sun, Zap, Shield, Flame, Wind } from 'lucide-react';
 
 const NosSolutions: React.FC = () => {
   const solutions = [

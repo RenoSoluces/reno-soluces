@@ -12,7 +12,7 @@ import {
   Clock,
   Home,
 } from "lucide-react";
-import BallonThermo1 from "../../assets/BallonThermo1.jpg";
+import BallonThermo1 from "../../assets/BallonThermo1.webp";
 
 const RentabiliteChauffeEauThermodynamique: React.FC<{
   onPageChange: (page: string) => void;
@@ -267,7 +267,7 @@ const RentabiliteChauffeEauThermodynamique: React.FC<{
             </div>
 
             <div className="relative">
-              <img
+              <img loading="lazy" decoding="async"
                 src={BallonThermo1}
                 alt="Chauffe-eau thermodynamique"
                 className="w-full h-64 object-cover rounded-2xl shadow-lg"
@@ -429,12 +429,10 @@ const RentabiliteChauffeEauThermodynamique: React.FC<{
             besoins en eau chaude et votre projet.
           </p>
 
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             💧 Demander à être contacté
-          </button>
+          </a>
         </section>
       </main>
 

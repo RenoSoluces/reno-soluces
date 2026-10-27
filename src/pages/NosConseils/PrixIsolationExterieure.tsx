@@ -9,7 +9,7 @@ import {
   BarChart3,
   Shield,
 } from "lucide-react";
-import Exterieur1 from "../../assets/Exterieur1.jpeg";
+import Exterieur1 from "../../assets/Exterieur1.webp";
 
 const PrixIsolationExterieure: React.FC<{
   onPageChange: (page: string) => void;
@@ -198,7 +198,7 @@ const PrixIsolationExterieure: React.FC<{
             </div>
 
             <div className="relative">
-              <img
+              <img loading="lazy" decoding="async"
                 src={Exterieur1}
                 alt="Isolation thermique extérieure d'une maison"
                 className="w-full h-64 object-cover rounded-2xl shadow-lg"
@@ -488,12 +488,10 @@ const PrixIsolationExterieure: React.FC<{
             être orienté vers une solution adaptée.
           </p>
 
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             Demander à être contacté
-          </button>
+          </a>
         </section>
       </main>
 
