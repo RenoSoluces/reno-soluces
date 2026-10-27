@@ -1,5 +1,7 @@
 import React from 'react';
-import { ArrowRight, Check, ChevronRight, FileText, Handshake, Home, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Check, ChevronRight, FileText, Handshake, Home, MapPin, Phone, ShieldCheck, Sparkles } from 'lucide-react';
+import { PHONE_DISPLAY, PHONE_HREF } from '../lib/contact';
+import { trackPhoneClick } from '../lib/tracking';
 import ProjectLeadForm from './ProjectLeadForm';
 import Logo from '../assets/Logo.png';
 import HeroImage from '../assets/Projet1.jpeg';
@@ -137,6 +139,14 @@ export default function HomePage({ onPageChange }: Props) {
                 >
                   Voir comment ça fonctionne <ChevronRight size={17} />
                 </button>
+
+                <a
+                  className="text-link"
+                  href={PHONE_HREF}
+                  onClick={() => trackPhoneClick('accueil_hero')}
+                >
+                  <Phone size={16} /> {PHONE_DISPLAY}
+                </a>
               </div>
 
               <div className="hero-points">

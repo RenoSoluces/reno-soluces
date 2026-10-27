@@ -1,3 +1,5 @@
+import { trackLead } from '../lib/tracking';
+import { useAntiSpam } from '../lib/antiSpam';
 import React, { useState } from 'react';
 import { ArrowRight, Check, Loader2, MapPin } from 'lucide-react';
 
@@ -24,6 +26,7 @@ export default function ProjectLeadForm() {
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [error, setError] = useState('');
+  const { trapField, payload: antiSpamPayload } = useAntiSpam();
 
   const update = (key: keyof FormData, value: string | boolean) =>
     setForm((current) => ({ ...current, [key]: value }));
@@ -43,9 +46,10 @@ export default function ProjectLeadForm() {
       const response = await fetch('/api/submitLead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'site-reno-soluces', createdAt: new Date().toISOString() }),
+        body: JSON.stringify({ ...form, ...antiSpamPayload(), source: 'site-reno-soluces', createdAt: new Date().toISOString() }),
       });
       if (!response.ok) throw new Error('Votre demande n’a pas pu être envoyée.');
+      trackLead('formulaire_accueil', form.project);
       setStatus('success');
     } catch (err) {
       console.error(err);
@@ -111,6 +115,7 @@ export default function ProjectLeadForm() {
           <div className="grid sm:grid-cols-2 gap-4"><label><span className="label">Téléphone</span><input className="field" type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} required /></label><label><span className="label">E-mail</span><input className="field" type="email" value={form.email} onChange={(e) => update('email', e.target.value)} required /></label></div>
           <label className="flex gap-3 text-xs leading-5 text-[#656a66] pt-2"><input type="checkbox" checked={form.consent} onChange={(e) => update('consent', e.target.checked)} required className="mt-1" /> J’accepte d’être recontacté au sujet de mon projet et confirme avoir pris connaissance de la politique de confidentialité.</label>
           {status === 'error' && <p className="text-sm text-red-600">{error}</p>}
+          {trapField}
           <div className="flex gap-3 pt-2"><button type="button" onClick={() => setStep(2)} className="secondary flex-1">Retour</button><button type="submit" disabled={status === 'loading'} className="primary flex-1">{status === 'loading' ? <Loader2 className="animate-spin" size={18} /> : <>Envoyer ma demande <ArrowRight size={17} /></>}</button></div>
         </div>
       )}

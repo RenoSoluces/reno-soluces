@@ -1,4 +1,6 @@
 // src/pages/Contact/Contact.tsx
+import { trackLead } from '../../lib/tracking';
+import { useAntiSpam } from '../../lib/antiSpam';
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Calendar, Clock, AlertCircle } from "lucide-react";
@@ -42,6 +44,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
 
   const [addressSuggestions, setAddressSuggestions] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const { trapField, payload: antiSpamPayload } = useAntiSpam();
 
   // Auto-complétion adresse (API BAN)
   const handleAddressInput = async (value: string) => {
@@ -74,13 +77,14 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, ...antiSpamPayload() }),
     });
 
     if (!response.ok) {
       throw new Error("Erreur lors de l’envoi du formulaire");
     }
 
+    trackLead('page_contact', typeof form.project === 'string' ? form.project : undefined);
     setSubmitted(true);
   } catch (error) {
     console.error(error);
@@ -355,6 +359,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
                     </div>
 
                     {/* Bouton */}
+                    {trapField}
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}

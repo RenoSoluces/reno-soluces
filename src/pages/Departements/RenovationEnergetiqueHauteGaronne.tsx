@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { PHONE_DISPLAY, PHONE_HREF } from '../../lib/contact';
+import { trackPhoneClick } from '../../lib/tracking';
 import { MapPin, Phone, CheckCircle, Home, Shield, Flame, Sun } from 'lucide-react';
 import HauteGaronne from '../../assets/HauteGaronne.jpeg';
 
@@ -167,13 +169,14 @@ const RenovationEnergetiqueHauteGaronne: React.FC<{ onPageChange: (page: string)
             Nos conseillers locaux vous accompagnent dans votre projet de rénovation énergétique
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => onPageChange("contact")}
+            <a
+              href={PHONE_HREF}
+              onClick={() => trackPhoneClick("page_departement")}
               className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center justify-center"
             >
               <Phone className="w-5 h-5 mr-2" />
-              06.69.30.70.21
-            </button>
+              {PHONE_DISPLAY}
+            </a>
             <button
               onClick={() => onPageChange("contact")}
               className="bg-white hover:bg-gray-100 text-emerald-900 px-8 py-4 rounded-full font-semibold text-lg transition-colors"
