@@ -89,7 +89,7 @@ const FonctionnementPanneaux: React.FC<{ onPageChange: (page: string) => void }>
         {/* Schéma visuel */}
         <section className="text-center">
           <h2 className="text-3xl font-bold mb-6">🖼️ Schéma simplifié du fonctionnement</h2>
-          <img 
+          <img loading="lazy" decoding="async" 
             src="/images/schema-fonctionnement-solaire.png" 
             alt="Schéma du fonctionnement des panneaux solaires" 
             className="mx-auto rounded-2xl shadow-lg max-w-3xl"
@@ -135,12 +135,10 @@ const FonctionnementPanneaux: React.FC<{ onPageChange: (page: string) => void }>
           <p className="mb-6 max-w-2xl mx-auto">
             Profitez de nos conseils personnalisés et découvrez combien vous pourriez économiser grâce au solaire.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             ⚡ Estimer mes économies
-          </button>
+          </a>
         </section>
       </main>
 

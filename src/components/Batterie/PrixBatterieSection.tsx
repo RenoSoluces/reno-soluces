@@ -1,11 +1,11 @@
 import React from 'react';
-import Batterie2 from '../../assets/Batterie2.jpg';
+import Batterie2 from '../../assets/Batterie2.webp';
 
 interface PrixBatterieSectionProps {
   onPageChange?: (page: string) => void;
 }
  
-const PrixBatterieSection: React.FC<PrixBatterieSectionProps> = ({ onPageChange }) => {
+const PrixBatterieSection: React.FC<PrixBatterieSectionProps> = () => {
   return (
     <section className="bg-white py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,18 +38,16 @@ souhaité et des conditions d'installation.
 
             {/* Bouton CTA */}
             <div className="pt-4">
-              <button 
-                onClick={() => onPageChange && onPageChange('contact')}
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-              >
+              <a href="/contact"
+                className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors">
                 Contacter un éco-technicien
-              </button>
+              </a>
             </div>
           </div>
 
           {/* Partie droite - Image illustrative */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={Batterie2}
               alt="Installation de batterie solaire"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

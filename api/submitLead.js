@@ -1,11 +1,89 @@
+// ---------------------------------------------------------------------------
+// Protection anti-spam et validation
+// ---------------------------------------------------------------------------
+
+const MAX_REQUESTS_PER_WINDOW = 5;
+const WINDOW_MS = 10 * 60 * 1000;
+const MIN_FILL_TIME_MS = 1500;
+const recentRequests = new Map();
+
+/**
+ * Limitation simple par adresse IP. Elle vit en mémoire de l'instance serverless :
+ * elle freine les envois répétés sans remplacer un vrai captcha (voir README).
+ */
+function isRateLimited(ip) {
+  const now = Date.now();
+  const hits = (recentRequests.get(ip) || []).filter((time) => now - time < WINDOW_MS);
+  hits.push(now);
+  recentRequests.set(ip, hits);
+
+  if (recentRequests.size > 500) {
+    for (const [key, times] of recentRequests) {
+      if (times.every((time) => now - time >= WINDOW_MS)) recentRequests.delete(key);
+    }
+  }
+  return hits.length > MAX_REQUESTS_PER_WINDOW;
+}
+
+function isAllowedOrigin(req) {
+  const origin = req.headers.origin;
+  if (!origin) return true;
+  try {
+    const { hostname } = new URL(origin);
+    return (
+      hostname === 'renosoluces.fr' ||
+      hostname === 'www.renosoluces.fr' ||
+      hostname === 'localhost' ||
+      hostname.endsWith('.vercel.app')
+    );
+  } catch {
+    return false;
+  }
+}
+
+/** Nettoie un texte libre : retire les caractères de contrôle et limite la longueur. */
+function clean(value, max) {
+  return String(value ?? '')
+    .replace(/[\u0000-\u001f\u007f]/g, ' ')
+    .trim()
+    .slice(0, max);
+}
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function isValidPhone(phone) {
+  const digits = phone.replace(/\D/g, '');
+  return digits.length >= 9 && digits.length <= 15;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  if (!isAllowedOrigin(req)) {
+    return res.status(403).json({ error: 'Origine non autorisée' });
+  }
+
+  const forwarded = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  const ip = forwarded || req.socket?.remoteAddress || 'inconnue';
+
+  if (isRateLimited(ip)) {
+    res.setHeader('Retry-After', '600');
+    return res.status(429).json({ error: 'Trop de demandes. Merci de réessayer dans quelques minutes.' });
+  }
+
   try {
-    const data = req.body || {};
+    const data = req.body && typeof req.body === 'object' ? req.body : {};
+
+    // Champ piège rempli ou envoi anormalement rapide : on répond « succès »
+    // pour ne rien révéler aux robots, mais aucun prospect n'est créé.
+    const elapsed = Number(data.elapsedMs);
+    if (clean(data.website, 200) !== '' || (Number.isFinite(elapsed) && elapsed < MIN_FILL_TIME_MS)) {
+      console.warn('submitLead : envoi ignoré (anti-spam)');
+      return res.status(200).json({ success: true, prospectId: null });
+    }
 
     // Configuration Vercel
     const supabaseUrl = process.env.RENOVA_SUPABASE_URL;
@@ -20,11 +98,11 @@ export default async function handler(req, res) {
     }
 
     // Validation minimale
-    const firstName = String(data.firstName || '').trim();
-    const lastName = String(data.lastName || '').trim();
-    const phone = String(data.phone || '').trim();
-    const email = String(data.email || '').trim();
-    const project = String(data.project || '').trim();
+    const firstName = clean(data.firstName, 100);
+    const lastName = clean(data.lastName, 100);
+    const phone = clean(data.phone, 30);
+    const email = clean(data.email, 200);
+    const project = clean(data.project, 300);
 
     if (!firstName || !lastName || !phone || !email || !project) {
       return res.status(400).json({
@@ -32,7 +110,15 @@ export default async function handler(req, res) {
       });
     }
 
-    if (!data.consent) {
+    if (!EMAIL_PATTERN.test(email)) {
+      return res.status(400).json({ error: 'Adresse e-mail invalide' });
+    }
+
+    if (!isValidPhone(phone)) {
+      return res.status(400).json({ error: 'Numéro de téléphone invalide' });
+    }
+
+    if (data.consent !== true) {
       return res.status(400).json({
         error: 'Le consentement est requis',
       });
@@ -82,18 +168,16 @@ export default async function handler(req, res) {
      */
     const comments = [
       `Projet : ${project}`,
-      data.housing ? `Logement : ${data.housing}` : null,
-      data.timeline ? `Échéance : ${data.timeline}` : null,
-      data.heating ? `Chauffage actuel : ${data.heating}` : null,
-      data.appointmentDate
-        ? `Date souhaitée : ${data.appointmentDate}`
+      clean(data.housing, 100) ? `Logement : ${clean(data.housing, 100)}` : null,
+      clean(data.timeline, 100) ? `Échéance : ${clean(data.timeline, 100)}` : null,
+      clean(data.heating, 100) ? `Chauffage actuel : ${clean(data.heating, 100)}` : null,
+      clean(data.appointmentDate, 30)
+        ? `Date souhaitée : ${clean(data.appointmentDate, 30)}`
         : null,
-      data.appointmentTime
-        ? `Horaire souhaité : ${data.appointmentTime}`
+      clean(data.appointmentTime, 30)
+        ? `Horaire souhaité : ${clean(data.appointmentTime, 30)}`
         : null,
-      data.createdAt
-        ? `Demande reçue : ${data.createdAt}`
-        : `Demande reçue : ${new Date().toISOString()}`,
+      `Demande reçue : ${new Date().toISOString()}`,
     ]
       .filter(Boolean)
       .join('\n');
@@ -101,21 +185,21 @@ export default async function handler(req, res) {
     const prospect = {
       type_prospect: 'Particulier',
 
-      civilite: data.civilite || null,
+      civilite: clean(data.civilite, 20) || null,
       prenom: firstName,
       nom: lastName,
 
       telephone: phone,
       email,
 
-      adresse_rue: data.address || null,
-      adresse: data.address || null,
+      adresse_rue: clean(data.address, 200) || null,
+      adresse: clean(data.address, 200) || null,
       adresse_complement: null,
 
-      code_postal: String(data.postalCode || '').trim() || null,
-      ville: String(data.city || '').trim() || null,
+      code_postal: clean(data.postalCode, 10) || null,
+      ville: clean(data.city, 100) || null,
 
-      statut_occupation: data.status || null,
+      statut_occupation: clean(data.status, 50) || null,
 
       source: 'Reno Soluces',
       commentaires: comments,
@@ -173,8 +257,6 @@ export default async function handler(req, res) {
 
     console.log('Prospect Reno Soluces créé dans Renova OS:', {
       id: createdProspect?.id || null,
-      email,
-      commercial_id: adminProfileId,
     });
 
     return res.status(200).json({

@@ -1,11 +1,11 @@
 import { Check } from 'lucide-react';
-import Panneaux1 from '../../assets/Panneaux1.jpeg';
+import Panneaux1 from '../../assets/Panneaux1.webp';
 
 interface HeroSectionProps {
   onPageChange: (page: string) => void;
 }
 
-export default function HeroSection({ onPageChange }: HeroSectionProps) {
+export default function HeroSection(_props: HeroSectionProps) {
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,7 +15,7 @@ export default function HeroSection({ onPageChange }: HeroSectionProps) {
               {/* Colonne gauche - Texte */}
               <div className="bg-emerald-900 p-12 text-white flex flex-col justify-center">
                 <h1 className="text-4xl font-bold mb-8 leading-tight">
-                  Réduisez votre facture <br /> grâce au solaire
+                  Panneaux photovoltaïques :<br /> réduisez votre facture grâce au solaire
                 </h1>
 
                 <div className="space-y-4 mb-8"> 
@@ -33,12 +33,11 @@ export default function HeroSection({ onPageChange }: HeroSectionProps) {
                 </div>
 
                 <div className="space-y-4">
-                  <button
-                  onClick={() => onPageChange('contact')}
+                  <a href="/contact"
                   aria-label="Demander à être contacté par Reno Soluces"
-                  className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto">
+                  className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors w-full lg:w-auto">
 
-Demander à être contacté </button>
+Demander à être contacté </a>
 
                   <p className="text-green-200 text-sm">
                     Gratuit et sans engagement.

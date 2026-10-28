@@ -1,12 +1,12 @@
 // components/Photovoltaiques/CoutSection.tsx
 import React from 'react';
-import Panneaux3 from '../../assets/Panneaux3.jpg';
+import Panneaux3 from '../../assets/Panneaux3.webp';
 
 interface CoutSectionProps {
   onPageChange: (page: string) => void;
 }
 
-const CoutSection: React.FC<CoutSectionProps> = ({ onPageChange }) => (
+const CoutSection: React.FC<CoutSectionProps> = () => (
   <section className="bg-white py-16">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -18,12 +18,10 @@ const CoutSection: React.FC<CoutSectionProps> = ({ onPageChange }) => (
 
           <p className="text-gray-700 leading-relaxed">
             Le <span className="text-green-500 underline cursor-pointer hover:text-green-600 transition-colors">
-            <button 
-              onClick={() => onPageChange('solutions')}
-              className="text-green-500 underline cursor-pointer hover:text-green-600 transition-colors bg-transparent border-none p-0"
-            >
+            <a href="/solutions"
+              className="inline-block text-green-500 underline cursor-pointer hover:text-green-600 transition-colors bg-transparent border-none p-0">
               coût d'un système photovoltaïque
-            </button>
+            </a>
             </span>
           </p>
 
@@ -47,18 +45,16 @@ const CoutSection: React.FC<CoutSectionProps> = ({ onPageChange }) => (
           </p>
 
           <div className="pt-4">
-            <button
-              onClick={() => onPageChange('contact')}
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-            >
+            <a href="/contact"
+              className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors">
               Je réalise une étude énergétique
-            </button>
+            </a>
           </div>
         </div>
 
         {/* Image à droite */}
         <div className="relative">
-          <img
+          <img loading="lazy" decoding="async"
             src={Panneaux3}
             alt="Maison équipée de panneaux solaires"
             className="w-full h-96 object-cover rounded-2xl shadow-lg"

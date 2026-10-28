@@ -1,13 +1,16 @@
-import React from 'react';
-import { ArrowRight, Check, ChevronRight, FileText, Handshake, Home, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Check, ChevronRight, FileText, Handshake, Home, MapPin, Phone, ShieldCheck, Sparkles } from 'lucide-react';
+import { PHONE_DISPLAY, PHONE_HREF } from '../lib/contact';
+import { trackPhoneClick } from '../lib/tracking';
 import ProjectLeadForm from './ProjectLeadForm';
-import Logo from '../assets/Logo.png';
-import HeroImage from '../assets/Projet1.jpeg';
-import SolarImage from '../assets/Panneaux1.jpeg';
-import HeatPumpImage from '../assets/AirEau1.jpeg';
-import InsulationImage from '../assets/Exterieur1.jpeg';
-import ClimatisationImage from '../assets/AirAir2.jpeg';
+import Header from './Header';
+import PageLink from './PageLink';
+import HeroImage from '../assets/Projet1.webp';
+import SolarImage from '../assets/Panneaux1.webp';
+import HeatPumpImage from '../assets/AirEau1.webp';
+import InsulationImage from '../assets/Exterieur1.webp';
+import ClimatisationImage from '../assets/AirAir2.webp';
 import Footer from './Footer';
+import { HIGH_PRIORITY } from '../lib/images';
 import AvisClients from './AvisClients';
 
 interface Props {
@@ -41,61 +44,18 @@ const solutions = [
   },
 ];
 
+const zones = [
+  { to: 'renovation-energetique-aude', name: 'Aude (11)', text: 'Carcassonne, Narbonne, Minervois, Corbières' },
+  { to: 'renovation-energetique-herault', name: 'Hérault (34)', text: 'Béziers, Montpellier, Saint-Pons' },
+  { to: 'renovation-energetique-pyrenees-orientales', name: 'Pyrénées-Orientales (66)', text: 'Perpignan, Céret, Prades' },
+  { to: 'renovation-energetique-haute-garonne', name: 'Haute-Garonne (31)', text: 'Toulouse et sa région' },
+  { to: 'renovation-energetique-arriege', name: 'Ariège (09)', text: 'Foix, Pamiers, Lavelanet' },
+];
+
 export default function HomePage({ onPageChange }: Props) {
   return (
     <>
-      <header className="site-header">
-        <div className="container nav-inner">
-          <button
-            className="brand"
-            onClick={() => onPageChange('home')}
-            aria-label="Reno Soluces - accueil"
-          >
-            <img src={Logo} alt="Reno Soluces" />
-          </button>
-
-          <nav className="desktop-nav">
-            <button
-              onClick={() =>
-                document
-                  .getElementById('solutions')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              Nos solutions
-            </button>
-
-            <button
-              onClick={() =>
-                document
-                  .getElementById('methode')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              Comment ça marche
-            </button>
-
-            <button onClick={() => onPageChange('notre-identite')}>
-              À propos
-            </button>
-
-            <button onClick={() => onPageChange('notre-blog')}>
-              Guides
-            </button>
-          </nav>
-
-          <button
-            className="nav-cta"
-            onClick={() =>
-              document
-                .getElementById('projet')
-                ?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            Décrire mon projet <ArrowRight size={16} />
-          </button>
-        </div>
-      </header>
+      <Header onPageChange={onPageChange} />
 
       <main>
         <section className="hero-section">
@@ -106,37 +66,32 @@ export default function HomePage({ onPageChange }: Props) {
               </div>
 
               <h1>
-                Votre projet mérite <em>le bon professionnel.</em>
+                Votre rénovation énergétique mérite <em>le bon professionnel.</em>
               </h1>
 
               <p className="hero-lead">
-                Reno Soluces vous accompagne dans votre recherche et vous met
-                en relation avec un professionnel partenaire adapté à votre
-                projet.
+                Panneaux solaires, pompe à chaleur, isolation : Reno Soluces,
+                basé à Trausse dans l’Aude, étudie votre projet et vous met en
+                relation avec un professionnel partenaire adapté, partout en
+                Occitanie.
               </p>
 
               <div className="hero-actions">
-                <button
-                  className="primary large"
-                  onClick={() =>
-                    document
-                      .getElementById('projet')
-                      ?.scrollIntoView({ behavior: 'smooth' })
-                  }
-                >
+                <a className="primary large" href="#projet">
                   Décrire mon projet <ArrowRight size={18} />
-                </button>
+                </a>
 
-                <button
-                  className="text-link"
-                  onClick={() =>
-                    document
-                      .getElementById('methode')
-                      ?.scrollIntoView({ behavior: 'smooth' })
-                  }
-                >
+                <a className="text-link" href="#methode">
                   Voir comment ça fonctionne <ChevronRight size={17} />
-                </button>
+                </a>
+
+                <a
+                  className="text-link"
+                  href={PHONE_HREF}
+                  onClick={() => trackPhoneClick('accueil_hero')}
+                >
+                  <Phone size={16} /> {PHONE_DISPLAY}
+                </a>
               </div>
 
               <div className="hero-points">
@@ -156,6 +111,9 @@ export default function HomePage({ onPageChange }: Props) {
               <img
                 src={HeroImage}
                 alt="Maison rénovée en Occitanie"
+                width={1200}
+                height={900}
+                {...HIGH_PRIORITY}
               />
 
               <div className="hero-note">
@@ -201,22 +159,19 @@ export default function HomePage({ onPageChange }: Props) {
                 </h2>
               </div>
 
-              <button
-                className="text-link"
-                onClick={() => onPageChange('solutions')}
-              >
+              <PageLink to="solutions" className="text-link">
                 Toutes les solutions <ChevronRight size={17} />
-              </button>
+              </PageLink>
             </div>
 
             <div className="solution-grid">
               {solutions.map((s) => (
-                <button
+                <PageLink
                   key={s.title}
+                  to={s.page}
                   className="solution-card"
-                  onClick={() => onPageChange(s.page)}
                 >
-                  <img src={s.image} alt={s.title} />
+                  <img src={s.image} alt={s.title} loading="lazy" decoding="async" />
 
                   <div className="solution-overlay">
                     <span>{s.title}</span>
@@ -225,7 +180,7 @@ export default function HomePage({ onPageChange }: Props) {
                       <ArrowRight size={17} />
                     </i>
                   </div>
-                </button>
+                </PageLink>
               ))}
             </div>
           </div>
@@ -285,7 +240,9 @@ export default function HomePage({ onPageChange }: Props) {
             <div className="trust-photo">
               <img
                 src={InsulationImage}
-                alt="Projet de rénovation"
+                alt="Isolation thermique d’une maison en Occitanie"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
@@ -358,6 +315,34 @@ export default function HomePage({ onPageChange }: Props) {
           </div>
         </section>
 
+        <section className="section zones-section" aria-labelledby="zones-title">
+          <div className="container">
+            <div className="section-heading">
+              <div>
+                <span className="eyebrow">Zones d’intervention</span>
+                <h2 id="zones-title">Basés dans le Minervois, présents en Occitanie.</h2>
+              </div>
+            </div>
+
+            <p className="zones-intro">
+              Reno Soluces est installé à Trausse, entre Carcassonne et Narbonne.
+              Nous étudions les projets de rénovation énergétique dans l’Aude et
+              les départements voisins, puis nous les confions à des
+              professionnels partenaires qui interviennent sur votre secteur.
+            </p>
+
+            <div className="zones-grid">
+              {zones.map((zone) => (
+                <PageLink key={zone.to} to={zone.to} className="zone-card">
+                  <strong>{zone.name}</strong>
+                  <span>{zone.text}</span>
+                  <ArrowRight size={16} />
+                </PageLink>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="guide-section">
           <div className="container">
             <div className="section-heading">
@@ -366,12 +351,9 @@ export default function HomePage({ onPageChange }: Props) {
                 <h2>Comprendre avant de décider.</h2>
               </div>
 
-              <button
-                className="text-link"
-                onClick={() => onPageChange('notre-blog')}
-              >
+              <PageLink to="notre-blog" className="text-link">
                 Voir tous les guides <ChevronRight size={17} />
-              </button>
+              </PageLink>
             </div>
 
             <div className="guide-grid">
@@ -383,13 +365,9 @@ export default function HomePage({ onPageChange }: Props) {
                 <p>
                   Les critères à regarder avant de demander des devis.
                 </p>
-                <button
-                  onClick={() =>
-                    onPageChange('fonctionnement-pac-air-eau')
-                  }
-                >
+                <PageLink to="fonctionnement-pac-air-eau" className="guide-link">
                   Lire le guide <ArrowRight size={15} />
-                </button>
+                </PageLink>
               </article>
 
               <article>
@@ -400,13 +378,9 @@ export default function HomePage({ onPageChange }: Props) {
                 <p>
                   Puissance, autoconsommation, stockage et projet de toiture.
                 </p>
-                <button
-                  onClick={() =>
-                    onPageChange('installation-panneaux-solaires')
-                  }
-                >
+                <PageLink to="installation-panneaux-solaires" className="guide-link">
                   Lire le guide <ArrowRight size={15} />
-                </button>
+                </PageLink>
               </article>
 
               <article>
@@ -417,13 +391,9 @@ export default function HomePage({ onPageChange }: Props) {
                 <p>
                   Une méthode simple pour prioriser les travaux.
                 </p>
-                <button
-                  onClick={() =>
-                    onPageChange('tout-savoir-renovation-energetique')
-                  }
-                >
+                <PageLink to="tout-savoir-renovation-energetique" className="guide-link">
                   Lire le guide <ArrowRight size={15} />
-                </button>
+                </PageLink>
               </article>
             </div>
           </div>

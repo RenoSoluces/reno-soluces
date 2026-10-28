@@ -459,13 +459,11 @@ const Parrainage: React.FC<{ onPageChange: (page: string) => void }> = ({ onPage
             ou pour déclarer un parrainage en cours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => onPageChange("contact")}
-              className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center justify-center"
-            >
+            <a href="/contact"
+              className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center justify-center">
               <Phone className="w-5 h-5 mr-2" />
               Nous contacter
-            </button>
+            </a>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors"

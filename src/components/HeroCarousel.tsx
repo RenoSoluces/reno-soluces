@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Check } from 'lucide-react';
-import Caroussel1 from '../assets/Caroussel1.jpeg';
-import Caroussel2 from '../assets/Caroussel2.jpg';
-import Caroussel3 from '../assets/Caroussel3.jpg';
+import Caroussel1 from '../assets/Caroussel1.webp';
+import Caroussel2 from '../assets/Caroussel2.webp';
+import Caroussel3 from '../assets/Caroussel3.webp';
 
 interface HeroCarouselProps {
   onPageChange: (page: string) => void;
@@ -15,7 +15,7 @@ interface Slide {
   cta: string;
 }
 
-const HeroCarousel: React.FC<HeroCarouselProps> = ({ onPageChange }) => {
+const HeroCarousel: React.FC<HeroCarouselProps> = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides: Slide[] = [
@@ -108,12 +108,11 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onPageChange }) => {
           ))}
         </div>
 
-        <button 
-  onClick={() => onPageChange("contact")}
-  className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md font-medium mb-4 transition-colors"
+        <a href="/contact"
+  className="inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md font-medium mb-4 transition-colors"
 >
   {slides[currentSlide].cta}
-</button>
+</a>
 
         
         <p className="text-xs text-gray-300 mb-6">

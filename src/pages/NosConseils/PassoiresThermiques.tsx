@@ -489,12 +489,10 @@ const PassoiresThermiques: React.FC<{
             avec un professionnel partenaire lorsque cela est pertinent.
           </p>
 
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md"
-          >
+          <a href="/contact"
+            className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md">
             Nous contacter
-          </button>
+          </a>
         </section>
       </main>
 

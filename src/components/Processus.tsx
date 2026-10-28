@@ -1,8 +1,8 @@
 import React from 'react';
-import Processus1 from '../assets/Processus1.jpg';
-import Processus2 from '../assets/Processus2.jpg';
-import Processus3 from '../assets/Processus3.jpg';
-import Processus4 from '../assets/Processus4.jpeg';
+import Processus1 from '../assets/Processus1.webp';
+import Processus2 from '../assets/Processus2.webp';
+import Processus3 from '../assets/Processus3.webp';
+import Processus4 from '../assets/Processus4.webp';
 
 const Processus: React.FC = () => {
   const steps = [

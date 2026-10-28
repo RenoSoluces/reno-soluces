@@ -27,7 +27,7 @@ Le prix dépend de la capacité, de la technologie, du matériel choisi et de la
   },
 ];
 
-const FaqSection: React.FC<BatterieFaqProps> = ({ onPageChange }) => {
+const FaqSection: React.FC<BatterieFaqProps> = () => {
   const [expandedQuestion, setExpandedQuestion] = React.useState<number | null>(null);
 
   const toggleQuestion = (index: number) => {
@@ -95,12 +95,10 @@ const FaqSection: React.FC<BatterieFaqProps> = ({ onPageChange }) => {
           ))}
         </div>
 
-        <button
-          onClick={() => onPageChange('faq')}
-          className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-        >
+        <a href="/faq"
+          className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
           Voir toutes les questions
-        </button>
+        </a>
       </div>
     </section>
   );

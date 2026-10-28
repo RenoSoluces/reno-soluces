@@ -1,4 +1,6 @@
 // src/pages/Contact/Contact.tsx
+import { trackLead } from '../../lib/tracking';
+import { useAntiSpam } from '../../lib/antiSpam';
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Calendar, Clock, AlertCircle } from "lucide-react";
@@ -42,6 +44,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
 
   const [addressSuggestions, setAddressSuggestions] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const { trapField, payload: antiSpamPayload } = useAntiSpam();
 
   // Auto-complétion adresse (API BAN)
   const handleAddressInput = async (value: string) => {
@@ -54,7 +57,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
       const data = await res.json();
 
       const suggestions = data.features.map(
-        (f: any) => f.properties.label as string
+        (f: { properties: { label: string } }) => f.properties.label
       );
       setAddressSuggestions(suggestions);
     } else {
@@ -62,7 +65,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
     }
   };
 
-  const update = (field: keyof FormState, value: any) =>
+  const update = <K extends keyof FormState>(field: K, value: FormState[K]) =>
     setForm({ ...form, [field]: value });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -74,13 +77,14 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, ...antiSpamPayload() }),
     });
 
     if (!response.ok) {
       throw new Error("Erreur lors de l’envoi du formulaire");
     }
 
+    trackLead('page_contact', typeof form.project === 'string' ? form.project : undefined);
     setSubmitted(true);
   } catch (error) {
     console.error(error);
@@ -112,14 +116,14 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
       <main className="flex flex-col lg:flex-row max-w-6xl mx-auto my-16 bg-white shadow-xl rounded-2xl overflow-hidden relative">
         {/* Bloc vert gauche */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={false}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           className="bg-emerald-700 text-white lg:w-1/3 p-10 flex flex-col justify-center"
         >
-          <h2 className="text-3xl font-extrabold mb-4 leading-tight">
-            Discutons de votre projet de rénovation énergétique 🌿
-          </h2>
+          <h1 className="text-3xl font-extrabold mb-4 leading-tight">
+            Décrivez votre projet de rénovation énergétique
+          </h1>
           <p className="text-emerald-100 text-lg mb-6">
             Remplissez le formulaire, ou choisissez un créneau téléphonique
             avec l’un de nos conseillers.
@@ -138,7 +142,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
               <motion.form
                 key="formulaire"
                 onSubmit={handleSubmit}
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
@@ -317,6 +321,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
 
                       <input
                         type="date"
+                        aria-label="Date de rappel souhaitée"
                         className="border rounded-lg px-4 py-3 w-full mb-4"
                         value={form.appointmentDate}
                         onChange={(e) => update("appointmentDate", e.target.value)}
@@ -345,6 +350,8 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
                     <div className="flex items-start gap-2">
                       <input
                         type="checkbox"
+                        id="contact-consent"
+                        aria-label="J’accepte d’être rappelé et la politique de confidentialité"
                         checked={form.consent}
                         onChange={(e) => update("consent", e.target.checked)}
                         required
@@ -355,6 +362,7 @@ const Contact: React.FC<{ onPageChange: (page: string) => void }> = ({
                     </div>
 
                     {/* Bouton */}
+                    {trapField}
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}

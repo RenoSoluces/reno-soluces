@@ -1,15 +1,15 @@
-import React from 'react';
+import PageLink from '../../components/PageLink';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { ArrowRight, Battery, Building2, Droplets, Flame, Layers3, Sun, Wind, Warehouse } from 'lucide-react';
-import AirEau from '../../assets/AirEau1.jpeg';
-import Solar from '../../assets/Panneaux1.jpeg';
-import Exterior from '../../assets/Exterieur1.jpeg';
-import Comble from '../../assets/Combles1.jpeg';
-import Floor from '../../assets/PlancherBas1.jpg';
-import Thermo from '../../assets/BallonThermo1.jpg';
-import BatteryImg from '../../assets/Batterie1.jpg';
-import AirAir from '../../assets/AirAir1.jpeg';
+import AirEau from '../../assets/AirEau1.webp';
+import Solar from '../../assets/Panneaux1.webp';
+import Exterior from '../../assets/Exterieur1.webp';
+import Comble from '../../assets/Combles1.webp';
+import Floor from '../../assets/PlancherBas1.webp';
+import Thermo from '../../assets/BallonThermo1.webp';
+import BatteryImg from '../../assets/Batterie1.webp';
+import AirAir from '../../assets/AirAir1.webp';
 
 type Props={onPageChange:(page:string)=>void};
 const items=[
@@ -23,7 +23,7 @@ const items=[
  {title:'Chauffe-eau thermodynamique',page:'chauffe-eau-thermodynamique',image:Thermo,icon:Flame,text:'Une production d’eau chaude qui utilise les calories de l’air.'},
 ];
 export default function Solutions({onPageChange}:Props){return <div className="bg-gray-50 min-h-screen"><Header activeSection="solutions" onSectionChange={()=>{}} onPageChange={onPageChange}/><main>
- <section className="py-20 bg-gray-50"><div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[.8fr_1.2fr] gap-16 items-end"><div><div className="eyebrow"><span/> NOS SOLUTIONS</div><h1 className="mt-4 text-5xl font-bold text-gray-900">Des travaux différents, une même exigence de clarté.</h1></div><p className="text-lg text-gray-600 leading-relaxed max-w-2xl">Reno Soluces vous aide à identifier le type de projet correspondant à votre besoin, puis à vous orienter vers un professionnel partenaire lorsque votre demande entre dans son domaine d’intervention.</p></div></section>
- <section className="pb-24"><div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">{items.map(({title,page,image,icon:Icon,text})=><button key={page} onClick={()=>onPageChange(page)} className="group text-left bg-white border border-gray-100 overflow-hidden"><div className="relative h-72 overflow-hidden"><img src={image} alt={title} className="w-full h-full object-cover transition duration-500 group-hover:scale-105"/><div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"/><div className="absolute left-5 bottom-5 text-white flex items-center gap-3"><Icon size={19}/><span className="font-semibold">{title}</span></div></div><div className="p-6"><p className="text-gray-600 leading-relaxed min-h-[72px]">{text}</p><span className="mt-5 inline-flex items-center gap-2 font-semibold text-emerald-800">Découvrir <ArrowRight size={16}/></span></div></button>)}</div></div></section>
- <section className="py-20 bg-emerald-900"><div className="max-w-5xl mx-auto px-4 text-center text-white"><div className="eyebrow justify-center"><span/> VOTRE PROJET</div><h2 className="mt-4 text-4xl md:text-5xl font-bold">Vous ne savez pas quelle solution choisir ?</h2><p className="mt-5 text-emerald-100 text-lg max-w-2xl mx-auto">Décrivez simplement votre logement et votre projet. Nous vous aidons à cadrer la première étape.</p><button onClick={()=>onPageChange('contact')} className="mt-8 inline-flex items-center gap-2 bg-white text-emerald-900 px-7 py-4 rounded-full font-bold">Décrire mon projet <ArrowRight size={17}/></button></div></section>
+ <section className="py-20 bg-gray-50"><div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[.8fr_1.2fr] gap-16 items-end"><div><div className="eyebrow"><span/> NOS SOLUTIONS</div><h1 className="mt-4 text-5xl font-bold text-gray-900">Nos solutions de rénovation énergétique</h1><p className="mt-4 text-xl text-gray-700 font-display">Des travaux différents, une même exigence de clarté.</p></div><p className="text-lg text-gray-600 leading-relaxed max-w-2xl">Reno Soluces vous aide à identifier le type de projet correspondant à votre besoin, puis à vous orienter vers un professionnel partenaire lorsque votre demande entre dans son domaine d’intervention.</p></div></section>
+ <section className="pb-24"><div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">{items.map(({title,page,image,icon:Icon,text})=><PageLink key={page} to={page} className="group block text-left bg-white border border-gray-100 overflow-hidden"><div className="relative h-72 overflow-hidden"><img src={image} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover transition duration-500 group-hover:scale-105"/><div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"/><div className="absolute left-5 bottom-5 text-white flex items-center gap-3"><Icon size={19}/><span className="font-semibold">{title}</span></div></div><div className="p-6"><p className="text-gray-600 leading-relaxed min-h-[72px]">{text}</p><span className="mt-5 inline-flex items-center gap-2 font-semibold text-emerald-800">Découvrir <ArrowRight size={16}/></span></div></PageLink>)}</div></div></section>
+ <section className="py-20 bg-emerald-900"><div className="max-w-5xl mx-auto px-4 text-center text-white"><div className="eyebrow justify-center"><span/> VOTRE PROJET</div><h2 className="mt-4 text-4xl md:text-5xl font-bold">Vous ne savez pas quelle solution choisir ?</h2><p className="mt-5 text-emerald-100 text-lg max-w-2xl mx-auto">Décrivez simplement votre logement et votre projet. Nous vous aidons à cadrer la première étape.</p><a href="/contact" className="mt-8 inline-flex items-center gap-2 bg-white text-emerald-900 px-7 py-4 rounded-full font-bold">Décrire mon projet <ArrowRight size={17}/></a></div></section>
  </main><Footer onPageChange={onPageChange}/></div>}

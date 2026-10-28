@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Wind, Droplets, Zap, Settings, Thermometer, Home } from "lucide-react";
-import AirEau2 from '../../assets/AirEau2.jpg';
+import AirEau2 from '../../assets/AirEau2.webp';
 
 const FonctionnementPacAirEau: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange }) => {
   return (
@@ -92,7 +92,7 @@ const FonctionnementPacAirEau: React.FC<{ onPageChange: (page: string) => void }
           <h2 className="text-3xl font-bold mb-6">🖼️ Schéma du fonctionnement</h2>
           <div className="bg-gray-50 rounded-2xl p-8">
             <div className="max-w-3xl mx-auto">
-              <img 
+              <img loading="lazy" decoding="async" 
                 src={AirEau2}
                 alt="Schéma du fonctionnement d'une pompe à chaleur air/eau" 
                 className="w-full rounded-xl shadow-lg"
@@ -195,12 +195,10 @@ const FonctionnementPacAirEau: React.FC<{ onPageChange: (page: string) => void }
             Découvrez si cette solution est adaptée à votre logement avec une étude personnalisée 
             et gratuite de nos éco-techniciens.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             🏠 Estimes mes aides
-          </button>
+          </a>
         </section>
       </main>
 

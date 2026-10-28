@@ -38,18 +38,20 @@ const Toggle: React.FC<{
 
 const PolitiqueCookies: React.FC<Props> = ({ onPageChange }) => {
   // Préférences cookies (localStorage pour l'exemple)
-  const [analytics, setAnalytics] = React.useState<boolean>(() => {
-    const v = localStorage.getItem("cookies_analytics");
-    return v ? v === "true" : false;
-  });
-  const [marketing, setMarketing] = React.useState<boolean>(() => {
-    const v = localStorage.getItem("cookies_marketing");
-    return v ? v === "true" : false;
-  });
-  const [functional, setFunctional] = React.useState<boolean>(() => {
-    const v = localStorage.getItem("cookies_functional");
-    return v ? v === "true" : false;
-  });
+  const [analytics, setAnalytics] = React.useState<boolean>(false);
+  const [marketing, setMarketing] = React.useState<boolean>(false);
+  const [functional, setFunctional] = React.useState<boolean>(false);
+
+  // Les préférences sont lues après l'affichage (elles n'existent que dans le navigateur).
+  React.useEffect(() => {
+    try {
+      setAnalytics(localStorage.getItem("cookies_analytics") === "true");
+      setMarketing(localStorage.getItem("cookies_marketing") === "true");
+      setFunctional(localStorage.getItem("cookies_functional") === "true");
+    } catch {
+      // Stockage indisponible : on garde les valeurs par défaut.
+    }
+  }, []);
 
   const savePrefs = () => {
     localStorage.setItem("cookies_analytics", String(analytics));

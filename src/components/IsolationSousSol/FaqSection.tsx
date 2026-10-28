@@ -27,7 +27,7 @@ Les aides peuvent réduire significativement le coût final.`,
   },
 ];
 
-const FaqSection: React.FC<FaqSectionProps> = ({ onPageChange }) => {
+const FaqSection: React.FC<FaqSectionProps> = () => {
   const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
 
   const toggle = (index: number) => {
@@ -88,12 +88,10 @@ const FaqSection: React.FC<FaqSectionProps> = ({ onPageChange }) => {
           ))}
         </div>
 
-        <button
-          onClick={() => onPageChange('faq')}
-          className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors"
-        >
+        <a href="/faq"
+          className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-semibold text-lg transition-colors">
           Voir toutes les questions
-        </button>
+        </a>
       </div>
     </section>
   );

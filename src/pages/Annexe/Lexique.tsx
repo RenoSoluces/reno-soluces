@@ -500,12 +500,10 @@ const Lexique: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageCha
             Nos éco-techniciens sont à votre disposition pour vous expliquer tous les aspects 
             techniques de votre projet de rénovation énergétique.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             💬 Nous contacter
-          </button>
+          </a>
         </section>
       </main>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
-import AirAir3 from '../../assets/AirAir3.jpg';
+import AirAir3 from '../../assets/AirAir3.webp';
 
 const InstallationProfessionnelSection: React.FC = () => {
   return (
@@ -34,7 +34,7 @@ const InstallationProfessionnelSection: React.FC = () => {
 
           <div className="relative">
             <div className="bg-gray-100 rounded-2xl p-6 flex items-center justify-center">
-              <img
+              <img loading="lazy" decoding="async"
                 src={AirAir3}
                 alt="Professionnel installant une pompe à chaleur Air/Air"
                 className="rounded-xl shadow-md object-cover w-full h-full max-h-96"

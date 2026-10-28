@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Actualites from "../../components/Actualites";
 import { Zap, CheckCircle } from "lucide-react";
-import FranceRenov from '../../assets/FranceRenov.jpg';
+import FranceRenov from '../../assets/FranceRenov.webp';
 
 const MaPrimeRenov: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange }) => {
   return (
@@ -17,7 +17,7 @@ const MaPrimeRenov: React.FC<{ onPageChange: (page: string) => void }> = ({ onPa
           <div>
             <h1 className="text-5xl font-extrabold mb-6">
               MaPrimeRénov’ : <br />
-              <span className="text-yellow-300">L’aide de l’État pour vos travaux</span>
+              <span className="text-yellow-300">l’aide de l’État pour vos travaux de rénovation</span>
             </h1>
             <p className="text-lg leading-relaxed mb-6 text-emerald-50">
               Réduisez vos factures d’énergie tout en améliorant votre confort.  
@@ -29,15 +29,13 @@ const MaPrimeRenov: React.FC<{ onPageChange: (page: string) => void }> = ({ onPa
                 Une aide dont l’éligibilité et le montant dépendent de votre situation et des règles en vigueur
               </span>
             </div>
-            <button
-              onClick={() => onPageChange("contact")}
-              className="px-8 py-4 bg-yellow-300 text-emerald-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
-            >
+            <a href="/contact"
+              className="inline-block px-8 py-4 bg-yellow-300 text-emerald-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition">
               💡 Je calcule mes aides
-            </button>
+            </a>
           </div>
           <div className="flex justify-center">
-            <img
+            <img loading="lazy" decoding="async"
               src={FranceRenov}
               alt="Travaux de rénovation énergétique"
               className="w-full max-w-md drop-shadow-2xl"
@@ -93,16 +91,14 @@ const MaPrimeRenov: React.FC<{ onPageChange: (page: string) => void }> = ({ onPa
           <p className="mb-6 max-w-2xl mx-auto">
             Nous vous aidons à comprendre les dispositifs susceptibles de concerner votre projet et pouvons vous orienter vers un professionnel partenaire lorsque cela correspond à votre demande. Les démarches, décisions d’attribution et conditions des aides restent du ressort des organismes et professionnels concernés.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-yellow-300 hover:bg-yellow-200 text-emerald-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-yellow-300 hover:bg-yellow-200 text-emerald-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             🚀 Je calcule mes aides
-          </button>
+          </a>
         </section>
       </main>
 
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Aides et financement" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

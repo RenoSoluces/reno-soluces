@@ -1,5 +1,5 @@
 import React from 'react';
-import Panneaux2 from '../../assets/Panneaux2.jpg';
+import Panneaux2 from '../../assets/Panneaux2.webp';
 
 const RentabiliteSection: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const RentabiliteSection: React.FC = () => {
 
           {/* Image à gauche */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={Panneaux2}
               alt="Technicien installant des panneaux photovoltaïques"
               className="w-full h-150 object-cover rounded-2xl shadow-lg"

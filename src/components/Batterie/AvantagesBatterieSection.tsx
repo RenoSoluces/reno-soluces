@@ -1,5 +1,5 @@
 import React from 'react';
-import Batterie3 from '../../assets/Batterie3.jpg';
+import Batterie3 from '../../assets/Batterie3.webp';
 
 
 const AvantagesBatterieSection: React.FC = () => {
@@ -46,7 +46,7 @@ const AvantagesBatterieSection: React.FC = () => {
 
           {/* Illustration */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={Batterie3}
               alt="Technicien installant une batterie solaire"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

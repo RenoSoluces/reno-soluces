@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Actualites from "../../components/Actualites";
 import { Zap, CheckCircle } from "lucide-react";
-import CEE1 from '../../assets/CEE1.jpg';
+import CEE1 from '../../assets/CEE1.webp';
 
 const CEE: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange }) => {
   return (
@@ -16,8 +16,8 @@ const CEE: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-5xl font-extrabold mb-6">
-              Certificats d’Économies d’Énergie (CEE) : <br />
-              <span className="text-yellow-300">Un coup de pouce pour vos travaux</span>
+              Primes CEE (certificats d’économies d’énergie) : <br />
+              <span className="text-yellow-300">un coup de pouce pour vos travaux</span>
             </h1>
             <p className="text-lg leading-relaxed mb-6 text-blue-50">
               Les CEE financent une partie de vos travaux de rénovation énergétique grâce aux
@@ -30,15 +30,13 @@ const CEE: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
                 Des aides pouvant être cumulées lorsque les règles des dispositifs le permettent
               </span>
             </div>
-            <button
-              onClick={() => onPageChange("contact")}
-              className="px-8 py-4 bg-yellow-300 text-blue-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition"
-            >
+            <a href="/contact"
+              className="inline-block px-8 py-4 bg-yellow-300 text-blue-900 font-bold text-lg rounded-full shadow-lg hover:bg-yellow-200 transition">
               ⚡ Je profite des CEE
-            </button>
+            </a>
           </div>
           <div className="flex justify-center">
-            <img
+            <img loading="lazy" decoding="async"
               src={CEE1}
               alt="Travaux financés par les CEE"
               className="w-full max-w-md drop-shadow-2xl"
@@ -130,16 +128,15 @@ const CEE: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
   correspondante.
 </p>
 
-<button
-  onClick={() => onPageChange("contact")}
-  className="bg-yellow-300 hover:bg-yellow-200 text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
+<a href="/contact"
+  className="inline-block bg-yellow-300 hover:bg-yellow-200 text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
 >
   Demander à être contacté
-</button>
+</a>
         </section>
       </main>
 
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Aides et financement" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

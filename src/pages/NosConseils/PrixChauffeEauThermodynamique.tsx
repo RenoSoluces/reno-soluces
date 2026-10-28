@@ -8,9 +8,8 @@ import {
   BarChart3,
   Settings,
   Droplets,
-  Euro,
 } from "lucide-react";
-import BallonThermo3 from "../../assets/BallonThermo3.jpeg";
+import BallonThermo3 from "../../assets/BallonThermo3.webp";
 
 const PrixChauffeEauThermodynamique: React.FC<{
   onPageChange: (page: string) => void;
@@ -226,7 +225,7 @@ const PrixChauffeEauThermodynamique: React.FC<{
             </div>
 
             <div className="relative">
-              <img
+              <img loading="lazy" decoding="async"
                 src={BallonThermo3}
                 alt="Chauffe-eau thermodynamique"
                 className="w-full h-64 object-cover rounded-2xl shadow-lg"
@@ -574,12 +573,10 @@ const PrixChauffeEauThermodynamique: React.FC<{
             vers une solution adaptée à votre logement.
           </p>
 
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
-          >
+          <a href="/contact"
+            className="inline-block bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
             Nous contacter
-          </button>
+          </a>
         </section>
       </main>
 

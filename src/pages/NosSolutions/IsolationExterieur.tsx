@@ -38,7 +38,7 @@ const IsolationExterieur: React.FC<IsolationExterieurProps> = ({ onPageChange })
       <InstallationParProfessionnelSection />
       <AvisRenoSolucesSection />
       <FaqSection onPageChange={onPageChange} />
-      <ActualitesSection onPageChange={onPageChange} />
+      <ActualitesSection category="Isolation" />
       
       <Footer onPageChange={onPageChange} />
     </div>

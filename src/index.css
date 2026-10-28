@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -60,3 +59,77 @@ button { font: inherit; cursor: pointer; }
 .cookie-consent-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .cookie-consent-copy{display:flex;align-items:flex-start;gap:14px;min-width:0}.cookie-consent-icon{width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:#e8f2ee;display:grid;place-items:center;color:#17634f}.cookie-consent-copy strong{display:block;font-size:15px;margin-bottom:5px}.cookie-consent-copy p{margin:0;color:#53645d;font-size:13px;line-height:1.5;max-width:760px}.cookie-link{border:0;background:none;padding:0;color:#17634f;text-decoration:underline;cursor:pointer;font:inherit}.cookie-consent-actions,.cookie-modal-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.cookie-btn{border:1px solid transparent;border-radius:10px;padding:10px 15px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}.cookie-btn-choice{background:#17634f;color:#fff;border-color:#17634f}.cookie-btn-choice:hover{background:#124b3d}.cookie-btn-primary{background:#17634f;color:#fff}.cookie-btn-primary:hover{background:#124b3d}.cookie-btn-secondary{background:#fff;color:#173b32;border-color:#b9c9c1}.cookie-btn-secondary:hover{background:#f1f5f3}.cookie-manage{position:fixed;z-index:9997;left:16px;bottom:16px;border:1px solid #c6d3ce;background:#fff;color:#173b32;border-radius:999px;padding:9px 13px;box-shadow:0 8px 24px rgba(0,0,0,.12);font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px;cursor:pointer}.cookie-modal-backdrop{position:fixed;z-index:9999;inset:0;background:rgba(10,27,22,.58);display:grid;place-items:center;padding:20px}.cookie-modal{width:min(720px,100%);max-height:min(90vh,760px);overflow:auto;background:#fff;border-radius:20px;padding:24px;box-shadow:0 30px 90px rgba(0,0,0,.3);color:#173b32}.cookie-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.cookie-modal-kicker{display:flex;align-items:center;gap:7px;color:#17634f;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.cookie-modal h2{font-size:28px;margin:6px 0 0}.cookie-close{border:0;background:#f0f4f2;border-radius:10px;width:38px;height:38px;display:grid;place-items:center;color:#173b32;cursor:pointer}.cookie-modal-intro{color:#53645d;line-height:1.6;font-size:14px;margin:16px 0}.cookie-options{display:grid;gap:10px}.cookie-option{display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid #dce5e1;border-radius:13px;padding:14px 15px;background:#fafcfb}.cookie-option strong{display:block;font-size:14px}.cookie-option span{display:block;color:#65746e;font-size:12px;line-height:1.45;margin-top:3px}.cookie-option input{width:19px;height:19px;accent-color:#17634f}.cookie-modal-actions{margin-top:20px;padding-top:18px;border-top:1px solid #e4ebe8}.cookie-modal-foot{font-size:12px;color:#68756f;margin:14px 0 0}
 @media (max-width:760px){.cookie-consent{left:10px;right:10px;bottom:10px;padding:15px}.cookie-consent-inner{align-items:stretch;flex-direction:column;gap:15px}.cookie-consent-actions{justify-content:stretch}.cookie-consent-actions .cookie-btn{flex:1}.cookie-modal{padding:19px}.cookie-modal-actions .cookie-btn{width:100%}.cookie-manage{left:10px;bottom:10px}}
+
+/* ------------------------------------------------------------------ */
+/* Liens de navigation (remplacent les anciens boutons)                */
+/* ------------------------------------------------------------------ */
+a.brand { display:flex; align-items:center; }
+.desktop-nav a { color:#4e5551; font-size:14px; font-weight:600; }
+.desktop-nav a:hover { color:#173b32; }
+.mobile-menu a { text-align:left; padding:12px 0; font-weight:700; color:#34403a; }
+.mobile-menu a.nav-cta { color:#fff; justify-content:center; margin-top:8px; }
+a.solution-card { display:block; }
+.guide-grid .guide-link { margin-top:auto; color:#173b32; font-weight:700; display:flex; align-items:center; gap:7px; }
+.guide-grid .guide-link:hover { color:#a75c39; }
+.footer-grid { grid-template-columns:1.5fr repeat(4,1fr); gap:40px; }
+.footer-grid a { display:block; color:#b9c5bf; padding:5px 0; font-size:14px; }
+.footer-grid a:hover { color:#fff; }
+.footer-address { font-style:normal; color:#b9c5bf; font-size:14px; line-height:1.7; margin-top:14px; }
+.footer-address a { display:inline; padding:0; }
+section[id] { scroll-margin-top:96px; }
+@media (max-width:1100px) { .footer-grid { grid-template-columns:repeat(3,1fr); } .footer-grid > div:first-child { grid-column:1 / -1; } }
+@media (max-width:560px) { .footer-grid { grid-template-columns:1fr 1fr; } }
+
+/* Zones d'intervention (accueil) */
+.zones-section { background:#fbfaf7; }
+.zones-intro { max-width:760px; color:#626862; font-size:17px; line-height:1.75; margin:-10px 0 34px; }
+.zones-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+.zone-card { display:flex; flex-direction:column; gap:8px; padding:24px; background:#fff; border:1px solid #e1ddd4; color:#173b32; transition:.2s; }
+.zone-card strong { font-family:'Playfair Display',Georgia,serif; font-size:21px; }
+.zone-card span { color:#6b716c; font-size:13px; line-height:1.5; }
+.zone-card svg { margin-top:auto; color:#a75c39; }
+.zone-card:hover { border-color:#a75c39; transform:translateY(-2px); }
+@media (max-width:1000px) { .zones-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px) { .zones-grid { grid-template-columns:1fr; } }
+
+/* Les boutons d'appel à l'action devenus des liens gardent leur forme */
+.premium-site a.bg-emerald-500,.premium-site a.bg-green-500 { border-radius:999px!important; font-weight:700; }
+
+/* ------------------------------------------------------------------ */
+/* Articles du blog                                                    */
+/* ------------------------------------------------------------------ */
+.article-body { color:#374151; font-size:17px; line-height:1.8; }
+.article-body > * + * { margin-top:1.1em; }
+.article-body h2 { font-size:28px; line-height:1.25; color:#173b32; margin-top:2em; scroll-margin-top:96px; }
+.article-body h3 { font-size:21px; line-height:1.3; color:#173b32; margin-top:1.6em; }
+.article-body ul { list-style:disc; padding-left:1.4em; }
+.article-body ol { list-style:decimal; padding-left:1.4em; }
+.article-body li + li { margin-top:.45em; }
+.article-body a { color:#0f6b52; text-decoration:underline; text-underline-offset:3px; }
+.article-body a:hover { color:#a75c39; }
+.article-body strong { color:#1f2937; }
+.rich-note { border-left:3px solid #a75c39; background:#f8f3ec; padding:16px 20px; color:#4b5563; font-size:16px; }
+.article-toc { border:1px solid #e5e1d8; background:#fbfaf7; padding:20px 24px; margin-bottom:32px; }
+.article-toc p { font-weight:700; color:#173b32; margin-bottom:8px; }
+.article-toc ol { list-style:decimal; padding-left:1.3em; color:#4b5563; font-size:15px; line-height:1.7; }
+.article-toc a:hover { color:#a75c39; text-decoration:underline; }
+.article-author { display:flex; flex-direction:column; gap:6px; margin-top:40px; padding-top:24px; border-top:1px solid #e5e7eb; color:#6b7280; font-size:14px; line-height:1.6; }
+.article-author strong { color:#173b32; font-size:15px; }
+.article-cta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; margin-top:32px; padding:32px; background:#173b32; color:#fff; }
+.article-cta h2 { font-size:26px; color:#fff; margin-bottom:6px; }
+.article-cta p { color:#d6e2dc; max-width:520px; }
+.article-cta-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.article-cta .primary { background:#fff; color:#173b32; }
+.article-cta .primary:hover { background:#f3f0e8; }
+.article-cta .secondary { background:transparent; color:#fff; border-color:rgba(255,255,255,.5); }
+
+/* Titres de colonnes du pied de page (ne sont pas des intertitres de contenu) */
+.footer-grid .footer-title { color:#fff; font-weight:700; margin:5px 0 15px; max-width:none; }
+
+/* Contrastes suffisants pour la lisibilité (accessibilité) */
+.premium-site .text-green-500 { color:#15803d; }
+.premium-site .bg-green-500 { background-color:#15803d; }
+.premium-site .hover\:bg-green-600:hover { background-color:#166534; }
+.hero-note small { color:#5f6560; }
+.eyebrow { color:#93502f; }
+.premium-site .bg-green-400.text-green-800,.premium-site .bg-green-400.text-green-900 { color:#14532d; }

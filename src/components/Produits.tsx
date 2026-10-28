@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import Projet1 from '../assets/Projet1.jpeg';
-import Projet3 from '../assets/Projet3.jpeg';
-import Projet4 from '../assets/Projet4.jpeg';
+import Projet1 from '../assets/Projet1.webp';
+import Projet3 from '../assets/Projet3.webp';
+import Projet4 from '../assets/Projet4.webp';
 
 interface ProduitsProps {
   onPageChange?: (page: string) => void;
@@ -73,7 +73,7 @@ const Produits: React.FC<ProduitsProps> = ({ onPageChange }) => {
               <div className="bg-emerald-900 text-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col h-96">
                 {/* Image */}
                 <div className="relative h-40 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={card.image}
                     alt={card.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
@@ -118,14 +118,10 @@ const Produits: React.FC<ProduitsProps> = ({ onPageChange }) => {
 
         {/* Bouton "Voir toutes nos solutions" */}
         <div className="text-center">
-          <button
-            onClick={() =>
-              onPageChange && onPageChange('solutions')
-            }
-            className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md"
-          >
+          <a href="/solutions"
+            className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md">
             Voir toutes nos solutions
-          </button>
+          </a>
         </div>
       </div>
     </section>

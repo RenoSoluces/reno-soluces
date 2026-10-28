@@ -56,7 +56,7 @@ const aides = [
   },
 ];
 
-export default function AidesFinancieres({ onPageChange }: { onPageChange: (page: string) => void }) {
+export default function AidesFinancieres(_props: { onPageChange: (page: string) => void }) {
   return (
     <section className="bg-white py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,12 +66,12 @@ export default function AidesFinancieres({ onPageChange }: { onPageChange: (page
             Quelles <span className="text-green-500">aides financières</span> existent pour votre<br /> installation solaire ?
           </h2>
           <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mt-6">
-            Afin de promouvoir les énergies renouvelables, l’État a mis en place diverses{' '}
-            <span 
-            onClick={() => onPageChange("contact")}
-            className="text-green-500 underline cursor-pointer hover:text-green-600 transition-colors">
-              aides financières pour l’installation de panneaux photovoltaïques
-            </span>. Voici les principales subventions disponibles :
+            Afin de promouvoir les énergies renouvelables, l’État a mis en place divers{' '}
+            <a
+              href="/guides/photovoltaique-autoconsommation-ou-vente-du-surplus"
+              className="text-green-500 underline hover:text-green-600 transition-colors">
+              dispositifs de soutien au photovoltaïque
+            </a>. Voici les principales subventions disponibles :
           </p>
         </div>
 
@@ -102,13 +102,11 @@ export default function AidesFinancieres({ onPageChange }: { onPageChange: (page
 
         {/* Bouton CTA */}
         <div className="text-center">
-          <button
-            onClick={() => onPageChange('contact')}
-            className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center gap-2"
-          >
+          <a href="/contact"
+            className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-colors inline-flex items-center gap-2">
             J’estime mes aides
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </a>
         </div>
       </div>
     </section>

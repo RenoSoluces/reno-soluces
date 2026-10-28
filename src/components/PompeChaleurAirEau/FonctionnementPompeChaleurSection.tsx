@@ -1,5 +1,5 @@
 import React from 'react';
-import AirEau2 from '../../assets/AirEau2.jpg';
+import AirEau2 from '../../assets/AirEau2.webp';
 
 const FonctionnementPompeChaleurSection: React.FC = () => {
   return (
@@ -57,7 +57,7 @@ const FonctionnementPompeChaleurSection: React.FC = () => {
 
           {/* Partie droite - Image */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={AirEau2}
               alt="Schéma de fonctionnement pompe à chaleur Air/Eau"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

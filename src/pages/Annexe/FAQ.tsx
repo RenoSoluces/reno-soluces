@@ -113,9 +113,9 @@ const FAQ: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange 
           <p className="mb-6 max-w-2xl mx-auto">
             Notre équipe est à votre disposition pour répondre à vos questions et vous orienter dans votre projet.
           </p>
-          <button onClick={() => onPageChange('contact')} className="bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
+          <a href="/contact" className="inline-block bg-green-400 hover:bg-green-300 text-green-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             💬 Nous contacter
-          </button>
+          </a>
         </section>
       </main>
 

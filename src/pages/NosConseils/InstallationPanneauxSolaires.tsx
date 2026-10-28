@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { ClipboardCheck, Home, Wrench, Euro } from "lucide-react";
-import PanneauxPV from "../../assets/PanneauxPV.jpg"; // ✅ import direct depuis src/assets
+import PanneauxPV from "../../assets/PanneauxPV.webp"; // ✅ import direct depuis src/assets
 
 const InstallationPanneauxSolaires: React.FC<{ onPageChange: (page: string) => void }> = ({ onPageChange }) => {
   return (
@@ -90,7 +90,7 @@ const InstallationPanneauxSolaires: React.FC<{ onPageChange: (page: string) => v
         {/* Schéma visuel */}
         <section className="text-center">
           <h2 className="text-3xl font-bold mb-6">🖼️ Exemple d’installation sur toiture</h2>
-          <img 
+          <img loading="lazy" decoding="async" 
             src={PanneauxPV} // ✅ image importée
             alt="Exemple d'installation de panneaux solaires" 
             className="mx-auto rounded-2xl shadow-lg max-w-3xl"
@@ -143,12 +143,10 @@ const InstallationPanneauxSolaires: React.FC<{ onPageChange: (page: string) => v
             Demandez dès maintenant une étude personnalisée pour connaître le coût, la rentabilité et 
             les aides disponibles pour votre installation.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             ☀️ Estimer mes économies
-          </button>
+          </a>
         </section>
       </main>
 

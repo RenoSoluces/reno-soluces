@@ -1,8 +1,79 @@
 {
-  "rewrites": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/guides/maprimerenov-ce-que-change-la-nouvelle-reglementation-pour-les-mandataires-des-juillet-2025",
+      "destination": "/guides/maprimerenov-comment-lire-les-taux-d-aide-sans-se-tromper",
+      "permanent": true
+    },
+    {
+      "source": "/guides/canicule-2025-pourquoi-une-maison-bien-isolee-protege-aussi-de-la-chaleur",
+      "destination": "/guides/confort-d-ete-l-isolation-ne-sert-pas-qu-en-hiver",
+      "permanent": true
+    },
+    {
+      "source": "/guides/panneaux-solaires-les-nouveautes-technologiques-2025",
+      "destination": "/guides/panneaux-solaires-technologies-et-evolutions-du-marche",
+      "permanent": true
+    },
+    {
+      "source": "/guides/panneaux-photovoltaiques-les-tendances-2025-qui-revolutionnent-le-marche",
+      "destination": "/guides/panneaux-solaires-technologies-et-evolutions-du-marche",
+      "permanent": true
+    },
+    {
+      "source": "/guides/rentree-2025-le-moment-ideal-pour-lancer-votre-projet-de-renovation-energetique",
+      "destination": "/guides/renovation-energetique-par-quoi-commencer-quand-tout-semble-prioritaire",
+      "permanent": true
+    },
+    {
+      "source": "/guides/audit-energetique-la-cle-d-une-renovation-reussie",
+      "destination": "/guides/audit-energetique-a-quoi-sert-il-dans-un-projet-ambitieux",
+      "permanent": true
+    },
+    {
+      "source": "/guides/eco-ptz-a-quoi-sert-ce-financement",
+      "destination": "/aides/eco-pret-taux-zero",
+      "permanent": true
+    },
+    {
+      "source": "/guides/tva-a-taux-reduit-quels-travaux-peuvent-en-beneficier",
+      "destination": "/aides/tva",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
     }
   ]
 }

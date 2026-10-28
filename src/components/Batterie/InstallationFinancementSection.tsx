@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Batterie6 from '../../assets/Batterie6.jpg';
+import Batterie6 from '../../assets/Batterie6.webp';
 
 const InstallationFinancementSection: React.FC = () => {
   return (
@@ -22,7 +22,7 @@ const InstallationFinancementSection: React.FC = () => {
 
           {/* Illustration */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={Batterie6}
               alt="Installation et financement d'une batterie solaire"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

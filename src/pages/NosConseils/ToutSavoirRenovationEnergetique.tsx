@@ -410,12 +410,10 @@ const ToutSavoirRenovationEnergetique: React.FC<{ onPageChange: (page: string) =
             Bénéficiez d'un accompagnement complet pour transformer votre logement en un espace 
             plus confortable, économique et respectueux de l'environnement.
           </p>
-          <button
-            onClick={() => onPageChange("contact")}
-            className="bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition"
-          >
+          <a href="/contact"
+            className="inline-block bg-white hover:bg-gray-100 text-green-600 px-8 py-4 rounded-full font-bold text-lg shadow-lg transition">
             🏠 Commencer mon projet
-          </button>
+          </a>
         </section>
       </main>
 

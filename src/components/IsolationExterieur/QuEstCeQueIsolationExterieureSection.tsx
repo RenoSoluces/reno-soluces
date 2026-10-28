@@ -1,6 +1,6 @@
 // src/components/IsolationExterieure/QuEstCeQueIsolationSection.tsx
 import React from 'react';
-import Exterieur2 from '../../assets/Exterieur2.jpeg';
+import Exterieur2 from '../../assets/Exterieur2.webp';
 
 const QuEstCeQueIsolationSection: React.FC = () => {
   return (
@@ -32,7 +32,7 @@ const QuEstCeQueIsolationSection: React.FC = () => {
 
           {/* Partie droite - Image */}
           <div className="relative">
-            <img
+            <img loading="lazy" decoding="async"
               src={Exterieur2}
               alt="Maison en cours d'isolation thermique par l'extérieur"
               className="w-full h-96 object-cover rounded-2xl shadow-lg"

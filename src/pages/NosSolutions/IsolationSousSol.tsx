@@ -38,7 +38,7 @@ const IsolationSousSol: React.FC<IsolationSoussolProps> = ({ onPageChange }) => 
       <AvisRenoSolucesSection />
       <FaqSection onPageChange={onPageChange} />
       
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Isolation" />
       <Footer onPageChange={onPageChange} />
     </div>
   );

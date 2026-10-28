@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import LogoIdehome from '../../assets/LogoIdehome.jpg';
-import LogoElen from '../../assets/LogoElen.jpg';
+import LogoIdehome from '../../assets/LogoIdehome.webp';
+import LogoElen from '../../assets/LogoElen.webp';
 
 const partners = [
   {
@@ -61,7 +61,7 @@ const NosPartenaires: React.FC<{ onPageChange: (page: string) => void }> = ({
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow flex items-center justify-center"
               >
                 {p.logoSrc ? (
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={p.logoSrc}
                     alt={`Logo ${p.name}`}
                     className="max-h-20 object-contain"

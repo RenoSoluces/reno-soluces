@@ -36,7 +36,7 @@ const ChauffeEauThermodynamique: React.FC<ChauffeEauThermodynamiqueProps> = ({ o
       <AidesFinancieresSection onPageChange={onPageChange} />
       <FaqSection onPageChange={onPageChange} />
       
-      <Actualites onPageChange={onPageChange} />
+      <Actualites category="Chauffage" />
       <Footer onPageChange={onPageChange} />
     </div>
   );
