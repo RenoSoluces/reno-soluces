@@ -3,6 +3,7 @@
  * Les informations sur l'entreprise elle-même sont dans index.html (#organization).
  */
 import { findArticleBySlug, articleImage, articleIsoDate } from '../data/blogArticles';
+import { faqData } from '../data/faq';
 import { PAGE_META, PAGE_ROUTES, SITE_URL, pathFor } from './routes';
 import type { SiteLocation } from './routes';
 
@@ -119,6 +120,20 @@ export function buildStructuredData(location: SiteLocation): object | null {
       provider: { '@id': ORG_ID },
       areaServed: { '@type': 'AdministrativeArea', name: department },
       url,
+    });
+  }
+
+  if (location.page === 'faq') {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      inLanguage: 'fr-FR',
+      publisher: { '@id': ORG_ID },
+      mainEntity: faqData.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
     });
   }
 
